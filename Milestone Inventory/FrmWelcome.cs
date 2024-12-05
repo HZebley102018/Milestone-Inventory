@@ -11,9 +11,9 @@ using System.Windows.Forms;
 /*
  * Harlee Zebley
  * CST-150
- * Milestone 2 Inventory
- * Novemeber 29, 2024
- * This is my own work
+ * Milestone Inventory
+ * December 4, 2024
+ * This is my own work with the aid of the textbook and code from the activities
  * */
 
 namespace Milestone_Inventory
@@ -31,8 +31,42 @@ namespace Milestone_Inventory
         /// <param name="e"></param>
         private void DisplayInventoryEventHandler(object sender, EventArgs e)
         {
-            FrmInventoryList fI= new FrmInventoryList();
+            FrmInventoryList fI = new FrmInventoryList();
             fI.Show();
+        }
+
+        private void FrmWelcome_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void CreateNewInventoryEventHandler(object sender, EventArgs e)
+        {
+            //Declare and initialize variables
+            //cost is a string because we are not doing any mathematical expressions
+            string name = "Name";
+            string description = "Description";
+            string unitSize = "Unit Size";
+            string material = "Material";
+            string cost = "Cost";
+            string quantity = "Quantity";
+            //Write variables to text file using StreamWriter 
+            try
+            {
+                StreamWriter outputFile;
+
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+
+                outputFile.WriteLine(name + ", " + description + ", " + unitSize + ", " +
+                material + ", " + cost + ", " + quantity);
+                outputFile.Close();
+            }
+            catch (Exception ex)
+            {
+                //Display an error message
+                MessageBox.Show(ex.Message);
+            }
+            MessageBox.Show("Inventory Created");
         }
     }
 }

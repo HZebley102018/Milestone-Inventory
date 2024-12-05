@@ -38,6 +38,7 @@ namespace Milestone_Inventory
         private void InitializeComponent()
         {
             btnDisplayInventory = new Button();
+            btnCreateNewInventory = new Button();
             SuspendLayout();
             // 
             // btnDisplayInventory
@@ -52,20 +53,36 @@ namespace Milestone_Inventory
             btnDisplayInventory.UseVisualStyleBackColor = false;
             btnDisplayInventory.Click += DisplayInventoryEventHandler;
             // 
+            // btnCreateNewInventory
+            // 
+            btnCreateNewInventory.BackColor = Color.WhiteSmoke;
+            btnCreateNewInventory.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnCreateNewInventory.Location = new Point(290, 186);
+            btnCreateNewInventory.Name = "btnCreateNewInventory";
+            btnCreateNewInventory.Size = new Size(217, 40);
+            btnCreateNewInventory.TabIndex = 1;
+            btnCreateNewInventory.Text = "Create New Inventory";
+            btnCreateNewInventory.UseVisualStyleBackColor = false;
+            btnCreateNewInventory.Click += CreateNewInventoryEventHandler;
+            // 
             // FrmWelcome
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnCreateNewInventory);
             Controls.Add(btnDisplayInventory);
             Name = "FrmWelcome";
             Text = "Welcome";
+            Load += FrmWelcome_Load;
+            Click += CreateNewInventoryEventHandler;
             ResumeLayout(false);
         }
 
         #endregion
 
         private Button btnDisplayInventory;
+        private Button btnCreateNewInventory;
     }
 }
