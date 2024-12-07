@@ -4,6 +4,10 @@ using Microsoft.VisualBasic.ApplicationServices;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using System.Diagnostics;
 using System.Collections.Generic;
+using System.Linq.Expressions;
+using System.IO;
+using System.Security.Cryptography.X509Certificates;
+using System.Runtime.CompilerServices;
 /*
  * Harlee Zebley
  * CST-150
@@ -16,21 +20,11 @@ namespace Milestone_Inventory
 {
     public partial class FrmInventoryList : Form
     {
-        //Declare variables that will be used across multiple methods and event handlers
-        private int quantity2 = 0;
-        private int quantity3 = 0;
-        private int quantity4 = 0;
-        private int quantity5 = 0;
-        private int quantity6 = 0;
-        const int PadSpace = 20;
-        
-       
+
         public FrmInventoryList()
         {
             InitializeComponent();
-
         }
-
 
         private void label1_Click(object sender, EventArgs e)
         {
@@ -62,470 +56,616 @@ namespace Milestone_Inventory
             //If populated populated correctly, a formatted label will be visible upon load. 
             lblTest.Visible = true;
 
-            Remove these lines of code. This is for testing during code writing for visual reference. 
+            Remove these lines of code. This is for testing during code writing for visual reference
+            of array.
             */
         }
-     
+        /// <summary>
+        /// This button will populate the inventory when clicked
+        /// If more items are added, clicking this button will reread the text and the additional inventory
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void RefreshViewClickEventHandler(object sender, EventArgs e)
         {
-            //This button will populate the inventory when clicked
-            //If more items are added, clicking this button will reread the text and the additional inventory
-            //Read the text file InventoryList.txt that was created in FrmWelcome and appended in FrmAddItem
-            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
-            //Clear labels
-            lblInventoryItemName1.Text = "";
-            lblInventoryItemName2.Text = "";
-            lblInventoryItemName3.Text = "";
-            lblInventoryItemName4.Text = "";
-            lblInventoryItemName5.Text = "";
-            lblInventoryItemName6.Text = "";
-            lblInventoryItemName7.Text = "";
-            lblInventoryItemName8.Text = "";
-            lblInventoryItemName9.Text = "";
-            lblInventoryItemName10.Text = "";
-            lblInventoryItemDescription1.Text = "";
-            lblInventoryItemDescription2.Text = "";
-            lblInventoryItemDescription3.Text = "";
-            lblInventoryItemDescription4.Text = "";
-            lblInventoryItemDescription5.Text = "";
-            lblInventoryItemDescription6.Text = "";
-            lblInventoryItemDescription7.Text = "";
-            lblInventoryItemDescription8.Text = "";
-            lblInventoryItemDescription9.Text = "";
-            lblInventoryItemDescription10.Text = "";
-            lblUnitSize1.Text = "";
-            lblUnitSize2.Text = "";
-            lblUnitSize3.Text = "";
-            lblUnitSize4.Text = "";
-            lblUnitSize5.Text = "";
-            lblUnitSize6.Text = "";
-            lblUnitSize7.Text = "";
-            lblUnitSize8.Text = "";
-            lblUnitSize9.Text = "";
-            lblUnitSize10.Text = "";
-            lblMaterial1.Text = "";
-            lblMaterial2.Text = "";
-            lblMaterial3.Text = "";
-            lblMaterial4.Text = "";
-            lblMaterial5.Text = "";
-            lblMaterial6.Text = "";
-            lblMaterial7.Text = "";
-            lblMaterial8.Text = "";
-            lblMaterial9.Text = "";
-            lblMaterial10.Text = "";
-            lblCost1.Text = "";
-            lblCost2.Text = "";
-            lblCost3.Text = "";
-            lblCost4.Text = "";
-            lblCost5.Text = "";
-            lblCost6.Text = "";
-            lblCost7.Text = "";
-            lblCost8.Text = "";
-            lblCost9.Text = "";
-            lblCost10.Text = "";
-            lblQuantity1.Text = "";
-            lblQuantity2.Text = "";
-            lblQuantity3.Text = "";
-            lblQuantity4.Text = "";
-            lblQuantity5.Text = "";
-            lblQuantity6.Text = "";
-            lblQuantity7.Text = "";
-            lblQuantity8.Text = "";
-            lblQuantity9.Text = "";
-            lblQuantity10.Text = "";
+            try
+            {
+                string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                //Clear labels
+                lblInventoryItemName1.Text = "";
+                lblInventoryItemName2.Text = "";
+                lblInventoryItemName3.Text = "";
+                lblInventoryItemName4.Text = "";
+                lblInventoryItemName5.Text = "";
+                lblInventoryItemName6.Text = "";
+                lblInventoryItemName7.Text = "";
+                lblInventoryItemName8.Text = "";
+                lblInventoryItemName9.Text = "";
+                lblInventoryItemName10.Text = "";
+                lblInventoryItemDescription1.Text = "";
+                lblInventoryItemDescription2.Text = "";
+                lblInventoryItemDescription3.Text = "";
+                lblInventoryItemDescription4.Text = "";
+                lblInventoryItemDescription5.Text = "";
+                lblInventoryItemDescription6.Text = "";
+                lblInventoryItemDescription7.Text = "";
+                lblInventoryItemDescription8.Text = "";
+                lblInventoryItemDescription9.Text = "";
+                lblInventoryItemDescription10.Text = "";
+                lblUnitSize1.Text = "";
+                lblUnitSize2.Text = "";
+                lblUnitSize3.Text = "";
+                lblUnitSize4.Text = "";
+                lblUnitSize5.Text = "";
+                lblUnitSize6.Text = "";
+                lblUnitSize7.Text = "";
+                lblUnitSize8.Text = "";
+                lblUnitSize9.Text = "";
+                lblUnitSize10.Text = "";
+                lblMaterial1.Text = "";
+                lblMaterial2.Text = "";
+                lblMaterial3.Text = "";
+                lblMaterial4.Text = "";
+                lblMaterial5.Text = "";
+                lblMaterial6.Text = "";
+                lblMaterial7.Text = "";
+                lblMaterial8.Text = "";
+                lblMaterial9.Text = "";
+                lblMaterial10.Text = "";
+                lblCost1.Text = "";
+                lblCost2.Text = "";
+                lblCost3.Text = "";
+                lblCost4.Text = "";
+                lblCost5.Text = "";
+                lblCost6.Text = "";
+                lblCost7.Text = "";
+                lblCost8.Text = "";
+                lblCost9.Text = "";
+                lblCost10.Text = "";
+                lblQuantity1.Text = "";
+                lblQuantity2.Text = "";
+                lblQuantity3.Text = "";
+                lblQuantity4.Text = "";
+                lblQuantity5.Text = "";
+                lblQuantity6.Text = "";
+                lblQuantity7.Text = "";
+                lblQuantity8.Text = "";
+                lblQuantity9.Text = "";
+                lblQuantity10.Text = "";
 
-
-            for (int i = 1; i < lines.Length; i++)
+                //Assign elements from array to text in inventory list
+                //Make assigned labels visible
+                for (int i = 0; i < lines.Length; i++)
                 {
                     //Display first inventory item 
-                    if (i == 1)
+                    if (i == 0)
                     {
-                    lblInventoryItemName1.Text += lines[i];
+                        lblInventoryItemName1.Text += lines[i];
                         lblInventoryItemName1.Visible = true;
                     }
-                    if (i == 2)
+                    if (i == 1)
                     {
                         lblInventoryItemDescription1.Text += lines[i];
                         lblInventoryItemDescription1.Visible = true;
                     }
-                    if (i == 3)
+                    if (i == 2)
                     {
                         lblUnitSize1.Text += lines[i];
                         lblUnitSize1.Visible = true;
                     }
-                    if (i == 4)
+                    if (i == 3)
                     {
                         lblMaterial1.Text += lines[i];
                         lblMaterial1.Visible = true;
                     }
-                    if (i == 5)
+                    if (i == 4)
                     {
                         lblCost1.Text += lines[i];
                         lblCost1.Visible = true;
                     }
-                    if (i == 6)
+                    if (i == 5)
                     {
                         lblQuantity1.Text += lines[i];
                         lblQuantity1.Visible = true;
+                        //Make quantity editor buttons visible
+                        btnIncrease1.Visible = true;
+                        btnDecrease1.Visible = true;
                     }
                     //Display second inventory item
-                    if (i == 7)
+                    if (i == 6)
                     {
                         lblInventoryItemName2.Text += lines[i];
                         lblInventoryItemName2.Visible = true;
                     }
-                    if (i == 8)
+                    if (i == 7)
                     {
                         lblInventoryItemDescription2.Text += lines[i];
                         lblInventoryItemDescription2.Visible = true;
                     }
-                    if (i == 9)
+                    if (i == 8)
                     {
                         lblUnitSize2.Text += lines[i];
                         lblUnitSize2.Visible = true;
                     }
-                    if (i == 10)
+                    if (i == 9)
                     {
                         lblMaterial2.Text += lines[i];
                         lblMaterial2.Visible = true;
                     }
-                    if (i == 11)
+                    if (i == 10)
                     {
                         lblCost2.Text += lines[i];
                         lblCost2.Visible = true;
                     }
-                    if (i == 12)
+                    if (i == 11)
                     {
                         lblQuantity2.Text += lines[i];
                         lblQuantity2.Visible = true;
+                        btnIncrease2.Visible = true;
+                        btnDecrease2.Visible = true;
                     }
                     //Display third inventory item
-                    if (i == 13)
+                    if (i == 12)
                     {
                         lblInventoryItemName3.Text += lines[i];
                         lblInventoryItemName3.Visible = true;
                     }
-                    if (i ==14)
+                    if (i == 13)
                     {
                         lblInventoryItemDescription3.Text += lines[i];
                         lblInventoryItemDescription3.Visible = true;
                     }
-                    if (i == 15)
+                    if (i == 14)
                     {
                         lblUnitSize3.Text += lines[i];
                         lblUnitSize3.Visible = true;
                     }
-                    if (i ==16)
+                    if (i == 15)
                     {
                         lblMaterial3.Text += lines[i];
                         lblMaterial3.Visible = true;
                     }
-                    if (i == 17)
+                    if (i == 16)
                     {
                         lblCost3.Text += lines[i];
                         lblCost3.Visible = true;
                     }
-                    if (i == 18)
+                    if (i == 17)
                     {
                         lblQuantity3.Text += lines[i];
                         lblQuantity3.Visible = true;
+                        btnIncrease3.Visible = true;
+                        btnDecrease3.Visible = true;
                     }
                     //Display fourth inventory item
-                    if (i == 19)
+                    if (i == 18)
                     {
                         lblInventoryItemName4.Text += lines[i];
                         lblInventoryItemName4.Visible = true;
                     }
-                    if (i == 20)
+                    if (i == 19)
                     {
                         lblInventoryItemDescription4.Text += lines[i];
                         lblInventoryItemDescription4.Visible = true;
                     }
-                    if (i ==21)
+                    if (i == 20)
                     {
                         lblUnitSize4.Text += lines[i];
                         lblUnitSize4.Visible = true;
                     }
-                    if (i == 22)
+                    if (i == 21)
                     {
                         lblMaterial4.Text += lines[i];
                         lblMaterial4.Visible = true;
                     }
-                    if (i == 23)
+                    if (i == 22)
                     {
                         lblCost4.Text += lines[i];
                         lblCost4.Visible = true;
                     }
-                    if (i == 24)
+                    if (i == 23)
                     {
                         lblQuantity4.Text += lines[i];
                         lblQuantity4.Visible = true;
+                        btnIncrease4.Visible = true;
+                        btnDecrease4.Visible = true;
                     }
                     //Display fifth inventory item
-                    if (i == 25)
+                    if (i == 24)
                     {
                         lblInventoryItemName5.Text += lines[i];
                         lblInventoryItemName5.Visible = true;
                     }
-                    if (i == 26)
+                    if (i == 25)
                     {
                         lblInventoryItemDescription5.Text += lines[i];
                         lblInventoryItemDescription5.Visible = true;
                     }
-                    if (i == 27)
+                    if (i == 26)
                     {
                         lblUnitSize5.Text += lines[i];
                         lblUnitSize5.Visible = true;
                     }
-                    if (i == 28)
+                    if (i == 27)
                     {
                         lblMaterial5.Text += lines[i];
                         lblMaterial5.Visible = true;
                     }
-                    if (i == 29)
+                    if (i == 28)
                     {
                         lblCost5.Text += lines[i];
                         lblCost5.Visible = true;
                     }
-                    if (i == 30)
+                    if (i == 29)
                     {
                         lblQuantity5.Text += lines[i];
                         lblQuantity5.Visible = true;
+                        btnIncrease5.Visible = true;
+                        btnDecrease5.Visible = true;
                     }
                     //Display sixth inventory item
-                    if (i == 31)
+                    if (i == 30)
                     {
                         lblInventoryItemName6.Text += lines[i];
                         lblInventoryItemName6.Visible = true;
                     }
-                    if (i == 32)
+                    if (i == 31)
                     {
                         lblInventoryItemDescription6.Text += lines[i];
                         lblInventoryItemDescription6.Visible = true;
                     }
-                    if (i == 33)
+                    if (i == 32)
                     {
                         lblUnitSize6.Text += lines[i];
                         lblUnitSize6.Visible = true;
                     }
-                    if (i == 34)
-                    {  
+                    if (i == 33)
+                    {
                         lblMaterial6.Text += lines[i];
                         lblMaterial6.Visible = true;
                     }
-                    if (i == 35)
+                    if (i == 34)
                     {
                         lblCost6.Text += lines[i];
                         lblCost6.Visible = true;
-                    }  
-                    if (i == 36)
+                    }
+                    if (i == 35)
                     {
                         lblQuantity6.Text += lines[i];
                         lblQuantity6.Visible = true;
-                    } 
+                        btnIncrease6.Visible = true;
+                        btnDecrease6.Visible = true;
+                    }
                     //Display seventh inventory item
-                    if (i == 37)
+                    if (i == 36)
                     {
                         lblInventoryItemName7.Text += lines[i];
                         lblInventoryItemName7.Visible = true;
                     }
-                    if (i == 38)
+                    if (i == 37)
                     {
                         lblInventoryItemDescription7.Text += lines[i];
                         lblInventoryItemDescription7.Visible = true;
-                    }  
-                    if (i == 39)
+                    }
+                    if (i == 38)
                     {
                         lblUnitSize7.Text += lines[i];
                         lblUnitSize7.Visible = true;
                     }
-                    if (i == 40)
+                    if (i == 39)
                     {
                         lblMaterial7.Text += lines[i];
                         lblMaterial7.Visible = true;
-                    }  
-                    if (i == 41)
+                    }
+                    if (i == 40)
                     {
                         lblCost7.Text += lines[i];
                         lblCost7.Visible = true;
                     }
-                    if (i == 42)
+                    if (i == 41)
                     {
                         lblQuantity7.Text += lines[i];
                         lblQuantity7.Visible = true;
+                        btnIncrease7.Visible = true;
+                        btnDecrease7.Visible = true;
                     }
                     //Display eighth inventory item
-                    if (i == 43)
+                    if (i == 42)
                     {
                         lblInventoryItemName8.Text += lines[i];
                         lblInventoryItemName8.Visible = true;
                     }
-                    if (i == 44)
+                    if (i == 43)
                     {
                         lblInventoryItemDescription8.Text += lines[i];
                         lblInventoryItemDescription8.Visible = true;
                     }
-                    if (i == 45)
+                    if (i == 44)
                     {
                         lblUnitSize8.Text += lines[i];
                         lblUnitSize8.Visible = true;
-                    }  
-                    if (i == 46)
+                    }
+                    if (i == 45)
                     {
                         lblMaterial8.Text += lines[i];
                         lblMaterial8.Visible = true;
                     }
-                    if (i == 47)
+                    if (i == 46)
                     {
                         lblCost8.Text += lines[i];
                         lblCost8.Visible = true;
-                    }   
-                    if (i == 48)
+                    }
+                    if (i == 47)
                     {
                         lblQuantity8.Text += lines[i];
                         lblQuantity8.Visible = true;
+                        btnIncrease8.Visible = true;
+                        btnDecrease8.Visible = true;
                     }
                     //Display ninth inventory item
-                    if (i == 49)
+                    if (i == 48)
                     {
                         lblInventoryItemName9.Text += lines[i];
                         lblInventoryItemName9.Visible = true;
                     }
-                    if (i == 50)
+                    if (i == 49)
                     {
                         lblInventoryItemDescription9.Text += lines[i];
                         lblInventoryItemDescription9.Visible = true;
-                    }   
-                    if (i == 51)
+                    }
+                    if (i == 50)
                     {
                         lblUnitSize9.Text += lines[i];
                         lblUnitSize9.Visible = true;
-                    }  
-                    if (i == 52)
+                    }
+                    if (i == 51)
                     {
                         lblMaterial9.Text += lines[i];
                         lblMaterial9.Visible = true;
-                    }   
-                    if (i == 53)
+                    }
+                    if (i == 52)
                     {
                         lblCost9.Text += lines[i];
                         lblCost9.Visible = true;
-                    }  
-                    if (i == 54)
+                    }
+                    if (i == 53)
                     {
                         lblQuantity9.Text += lines[i];
                         lblQuantity9.Visible = true;
-                    }  
+                        btnIncrease9.Visible = true;
+                        btnDecrease9.Visible = true;
+                    }
                     //Display tenth inventory item
-                    if (i == 55)
+                    if (i == 54)
                     {
                         lblInventoryItemName10.Text += lines[i];
                         lblInventoryItemName10.Visible = true;
                     }
-                    if (i == 56)
+                    if (i == 55)
                     {
                         lblInventoryItemDescription10.Text += lines[i];
                         lblInventoryItemDescription10.Visible = true;
                     }
-                    if (i == 57)
+                    if (i == 56)
                     {
                         lblUnitSize10.Text += lines[i];
                         lblUnitSize10.Visible = true;
                     }
-                    if (i == 58)
+                    if (i == 57)
                     {
                         lblMaterial10.Text += lines[i];
                         lblMaterial10.Visible = true;
                     }
-                    if (i == 59)
+                    if (i == 58)
                     {
                         lblCost10.Text += lines[i];
                         lblCost10.Visible = true;
                     }
-                    if (i == 60)
+                    if (i == 59)
                     {
                         lblQuantity10.Text += lines[i];
                         lblQuantity10.Visible = true;
-                    }   
+                        btnIncrease10.Visible = true;
+                        btnDecrease10.Visible = true;
+                    }
                 }
-                
             }
-       
-        //Create Event Handlers for increase and decrease buttons
-        //Display new variable amounts
-        //Create catch for negative inventory amounts (error)
+            catch (Exception ex)
+            {
+                //Display an error message if exception
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        
+        /// <summary>
+        /// Create Event Handlers for increase and decrease buttons
+        /// Display new variable amounts and overwrite text to save new quantities 
+        /// Create catch for negative inventory amounts (error)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Quantity1IncreaseEventHandler(object sender, EventArgs e)
         {
-            quantity2++;
-            lblQuantity1.Text = quantity2.ToString();
+            //Read text and assign to array elements
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            // Assign quantity-holding elements to new int
+            int quantity = int.Parse(lines[5]);
+            //increase by 1 per click
+            quantity++;
+            //Assign increased quantity to label as text
+            lblQuantity1.Text = quantity.ToString();
+            //Update the amount in the array 
+            lines[5] = quantity.ToString();
+            //Write over text to save. Skipping this step will only allow a single increase.
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            //Close Streamwriter to prevent error message when displaying inventory List
+            outputFile.Close();
         }
 
         private void Quantity1DecreaseEventHandler(object sender, EventArgs e)
         {
-            if (quantity2 > 0)
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[5]);
+            //Create catch for attempts to make inventory less than 0. 
+            if (quantity > 0)
             {
-                quantity2--;
-                lblQuantity1.Text = quantity2.ToString();
+                //Decrease quantity by 1
+                quantity--;
+                //Assign to label for display 
+                lblQuantity1.Text = quantity.ToString();
+                //Chane amount in array
+                lines[5] = quantity.ToString();
+                //Write over text file to save changes with new array assignments
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                //Close StreamWriter to prevent error when displaying Inventory List
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
+            }
+        }
+        private void Quantity2IncreaseEventHandler(object sender, EventArgs e)
+        {
+
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[11]);
+            quantity++;
+            lblQuantity2.Text = quantity.ToString();
+            lines[11] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
+        }
+
+        private void Quantity2DecreaseEventHandler(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[11]);
+
+            if (quantity > 0)
+            {
+                quantity--;
+
+                lblQuantity2.Text = quantity.ToString();
+
+                lines[11] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
             }
         }
 
         private void Quantity3IncreaseEventHandler(object sender, EventArgs e)
         {
-            quantity3++;
-            lblQuantity2.Text = quantity3.ToString();
+
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[17]);
+            quantity++;
+            lblQuantity3.Text = quantity.ToString();
+            lines[17] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
         }
 
         private void Quantity3DecreaseEventHandler(object sender, EventArgs e)
         {
-            if (quantity3 > 0)
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[17]);
+
+            if (quantity > 0)
             {
-                quantity3--;
-                lblQuantity2.Text = quantity3.ToString();
+                quantity--;
+
+                lblQuantity3.Text = quantity.ToString();
+
+                lines[17] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
             }
         }
 
         private void Quantity4IncreaseEventHandler(object sender, EventArgs e)
         {
-            quantity4++;
-            lblQuantity3.Text = quantity4.ToString();
+
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[23]);
+            quantity++;
+            lblQuantity4.Text = quantity.ToString();
+            lines[23] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
         }
 
         private void Quantity4DecreaseEventHandler(object sender, EventArgs e)
         {
-            if (quantity4 > 0)
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[23]);
+
+            if (quantity > 0)
             {
-                quantity4--;
-                lblQuantity3.Text = quantity4.ToString();
+                quantity--;
+
+                lblQuantity4.Text = quantity.ToString();
+
+                lines[23] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
             }
-        }
-
-        private void Quantity5IncreaseEventHandler(object sender, EventArgs e)
-        {
-            quantity5++;
-            lblQuantity4.Text = quantity5.ToString();
-        }
-
-        private void Quantity5DecreaseEventHandler(object sender, EventArgs e)
-        {
-            if (quantity5 > 0)
+            else
             {
-                quantity5--;
-                lblQuantity4.Text = quantity5.ToString();
-            }
-        }
-
-        private void Quantity6IncreaseEventHandler(object sender, EventArgs e)
-        {
-            quantity6++;
-            lblQuantity5.Text = quantity6.ToString();
-        }
-
-        private void Quantity6DecreaseEventHandler(object sender, EventArgs e)
-        {
-            if (quantity6 > 0)
-            {
-                quantity6--;
-                lblQuantity5.Text = quantity6.ToString();
+                MessageBox.Show("Cannot have inventory less than 0.");
             }
         }
         /// <summary>
@@ -539,16 +679,269 @@ namespace Milestone_Inventory
             f2.Show();
         }
 
-        private void label1_Click_1(object sender, EventArgs e)
+        private void Quantity5IncreaseEventHandler(object sender, EventArgs e)
         {
 
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[29]);
+            quantity++;
+            lblQuantity5.Text = quantity.ToString();
+            lines[29] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
         }
 
-        private void lblInventoryItemDescription6_Click(object sender, EventArgs e)
+        private void Quantity5DecreaseEventHandler(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[29]);
+
+            if (quantity > 0)
+            {
+                quantity--;
+
+                lblQuantity5.Text = quantity.ToString();
+
+                lines[29] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
+            }
+        }
+
+        private void Quantity6IncreaseEventHandler(object sender, EventArgs e)
         {
 
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[35]);
+            quantity++;
+            lblQuantity6.Text = quantity.ToString();
+            lines[35] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
         }
 
+        private void Quantity6DecreaseEventhandler(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[35]);
+
+            if (quantity > 0)
+            {
+                quantity--;
+
+                lblQuantity6.Text = quantity.ToString();
+
+                lines[35] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
+            }
+        }
+
+        private void Quantity7IncreaseEventHandler(object sender, EventArgs e)
+        {
+
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[41]);
+            quantity++;
+            lblQuantity7.Text = quantity.ToString();
+            lines[41] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
+        }
+
+        private void Quantity7DecreaseEventHandler(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[41]);
+
+            if (quantity > 0)
+            {
+                quantity--;
+
+                lblQuantity7.Text = quantity.ToString();
+
+                lines[41] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
+            }
+        }
+
+        private void Quantity8IncreaseEventHandler(object sender, EventArgs e)
+        {
+
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[47]);
+            quantity++;
+            lblQuantity8.Text = quantity.ToString();
+            lines[47] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
+        }
+
+        private void Quantity8DecreaseEventHandler(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[47]);
+
+            if (quantity > 0)
+            {
+                quantity--;
+
+                lblQuantity8.Text = quantity.ToString();
+
+                lines[47] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
+            }
+        }
+
+        private void Quantity9IncreaseEventHandler(object sender, EventArgs e)
+        {
+
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[53]);
+            quantity++;
+            lblQuantity9.Text = quantity.ToString();
+            lines[53] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
+        }
+
+        private void Quantity9DecreaseEventHandler(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[53]);
+
+            if (quantity > 0)
+            {
+                quantity--;
+
+                lblQuantity9.Text = quantity.ToString();
+
+                lines[53] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
+            }
+        }
+
+        private void Quantity10IncreaseEventHandler(object sender, EventArgs e)
+        {
+
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[59]);
+            quantity++;
+            lblQuantity10.Text = quantity.ToString();
+            lines[59] = quantity.ToString();
+            StreamWriter outputFile;
+            //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            for (int i = 0; i < lines.Length; i++)
+            {
+                outputFile.WriteLine(lines[i]);
+            }
+            outputFile.Close();
+        }
+
+        private void Quantity10DecreaseEventHandler(object sender, EventArgs e)
+        {
+            string[] lines = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+            int quantity = int.Parse(lines[59]);
+
+            if (quantity > 0)
+            {
+                quantity--;
+
+                lblQuantity10.Text = quantity.ToString();
+
+                lines[59] = quantity.ToString();
+                StreamWriter outputFile;
+                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
+                for (int i = 0; i < lines.Length; i++)
+                {
+                    outputFile.WriteLine(lines[i]);
+                }
+                outputFile.Close();
+            }
+            else
+            {
+                MessageBox.Show("Cannot have inventory less than 0.");
+            }
+        }
 
     }
 }

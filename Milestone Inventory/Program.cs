@@ -21,8 +21,8 @@ namespace Milestone_Inventory
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            //To have the Welcome Page display first
-            Application.Run(new FrmWelcome());
+            
+            Application.Run(new FrmInventoryList());
             
         }
     }

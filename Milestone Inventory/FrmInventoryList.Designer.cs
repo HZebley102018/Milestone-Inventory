@@ -227,7 +227,7 @@ namespace Milestone_Inventory
             lblMaterial.AutoSize = true;
             lblMaterial.BackColor = Color.WhiteSmoke;
             lblMaterial.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMaterial.Location = new Point(540, 98);
+            lblMaterial.Location = new Point(560, 98);
             lblMaterial.Name = "lblMaterial";
             lblMaterial.Size = new Size(75, 21);
             lblMaterial.TabIndex = 7;
@@ -238,7 +238,7 @@ namespace Milestone_Inventory
             lblCost.AutoSize = true;
             lblCost.BackColor = Color.WhiteSmoke;
             lblCost.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCost.Location = new Point(699, 98);
+            lblCost.Location = new Point(737, 98);
             lblCost.Name = "lblCost";
             lblCost.Size = new Size(43, 21);
             lblCost.TabIndex = 8;
@@ -249,7 +249,7 @@ namespace Milestone_Inventory
             lblQuantity.AutoSize = true;
             lblQuantity.BackColor = Color.WhiteSmoke;
             lblQuantity.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblQuantity.Location = new Point(799, 96);
+            lblQuantity.Location = new Point(852, 96);
             lblQuantity.Name = "lblQuantity";
             lblQuantity.Size = new Size(35, 21);
             lblQuantity.TabIndex = 9;
@@ -260,7 +260,7 @@ namespace Milestone_Inventory
             lblQuantity1.AutoSize = true;
             lblQuantity1.BackColor = Color.WhiteSmoke;
             lblQuantity1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity1.Location = new Point(802, 129);
+            lblQuantity1.Location = new Point(855, 129);
             lblQuantity1.Name = "lblQuantity1";
             lblQuantity1.Size = new Size(32, 21);
             lblQuantity1.TabIndex = 15;
@@ -272,7 +272,7 @@ namespace Milestone_Inventory
             lblCost1.AutoSize = true;
             lblCost1.BackColor = Color.WhiteSmoke;
             lblCost1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost1.Location = new Point(699, 129);
+            lblCost1.Location = new Point(737, 129);
             lblCost1.Name = "lblCost1";
             lblCost1.Size = new Size(39, 21);
             lblCost1.TabIndex = 14;
@@ -284,7 +284,7 @@ namespace Milestone_Inventory
             lblMaterial1.AutoSize = true;
             lblMaterial1.BackColor = Color.WhiteSmoke;
             lblMaterial1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial1.Location = new Point(540, 129);
+            lblMaterial1.Location = new Point(560, 129);
             lblMaterial1.Name = "lblMaterial1";
             lblMaterial1.Size = new Size(67, 21);
             lblMaterial1.TabIndex = 13;
@@ -329,7 +329,7 @@ namespace Milestone_Inventory
             // 
             // btnDecrease1
             // 
-            btnDecrease1.Location = new Point(765, 129);
+            btnDecrease1.Location = new Point(818, 129);
             btnDecrease1.Name = "btnDecrease1";
             btnDecrease1.Size = new Size(31, 21);
             btnDecrease1.TabIndex = 16;
@@ -340,7 +340,7 @@ namespace Milestone_Inventory
             // 
             // btnIncrease1
             // 
-            btnIncrease1.Location = new Point(840, 130);
+            btnIncrease1.Location = new Point(893, 130);
             btnIncrease1.Name = "btnIncrease1";
             btnIncrease1.Size = new Size(31, 21);
             btnIncrease1.TabIndex = 17;
@@ -352,7 +352,7 @@ namespace Milestone_Inventory
             // btnEditInventory1
             // 
             btnEditInventory1.AutoSize = true;
-            btnEditInventory1.Location = new Point(882, 129);
+            btnEditInventory1.Location = new Point(935, 129);
             btnEditInventory1.Name = "btnEditInventory1";
             btnEditInventory1.Size = new Size(75, 25);
             btnEditInventory1.TabIndex = 18;
@@ -363,7 +363,7 @@ namespace Milestone_Inventory
             // btnEditInventory2
             // 
             btnEditInventory2.AutoSize = true;
-            btnEditInventory2.Location = new Point(882, 160);
+            btnEditInventory2.Location = new Point(935, 160);
             btnEditInventory2.Name = "btnEditInventory2";
             btnEditInventory2.Size = new Size(75, 25);
             btnEditInventory2.TabIndex = 27;
@@ -373,32 +373,32 @@ namespace Milestone_Inventory
             // 
             // btnIncrease2
             // 
-            btnIncrease2.Location = new Point(840, 161);
+            btnIncrease2.Location = new Point(893, 161);
             btnIncrease2.Name = "btnIncrease2";
             btnIncrease2.Size = new Size(31, 21);
             btnIncrease2.TabIndex = 26;
             btnIncrease2.Text = ">";
             btnIncrease2.UseVisualStyleBackColor = true;
             btnIncrease2.Visible = false;
-            btnIncrease2.Click += Quantity3IncreaseEventHandler;
+            btnIncrease2.Click += Quantity2IncreaseEventHandler;
             // 
             // btnDecrease2
             // 
-            btnDecrease2.Location = new Point(765, 160);
+            btnDecrease2.Location = new Point(818, 160);
             btnDecrease2.Name = "btnDecrease2";
             btnDecrease2.Size = new Size(31, 21);
             btnDecrease2.TabIndex = 25;
             btnDecrease2.Text = "<";
             btnDecrease2.UseVisualStyleBackColor = true;
             btnDecrease2.Visible = false;
-            btnDecrease2.Click += Quantity3DecreaseEventHandler;
+            btnDecrease2.Click += Quantity2DecreaseEventHandler;
             // 
             // lblQuantity2
             // 
             lblQuantity2.AutoSize = true;
             lblQuantity2.BackColor = Color.WhiteSmoke;
             lblQuantity2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity2.Location = new Point(802, 160);
+            lblQuantity2.Location = new Point(855, 160);
             lblQuantity2.Name = "lblQuantity2";
             lblQuantity2.Size = new Size(32, 21);
             lblQuantity2.TabIndex = 24;
@@ -410,7 +410,7 @@ namespace Milestone_Inventory
             lblCost2.AutoSize = true;
             lblCost2.BackColor = Color.WhiteSmoke;
             lblCost2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost2.Location = new Point(699, 160);
+            lblCost2.Location = new Point(737, 160);
             lblCost2.Name = "lblCost2";
             lblCost2.Size = new Size(39, 21);
             lblCost2.TabIndex = 23;
@@ -422,7 +422,7 @@ namespace Milestone_Inventory
             lblMaterial2.AutoSize = true;
             lblMaterial2.BackColor = Color.WhiteSmoke;
             lblMaterial2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial2.Location = new Point(540, 160);
+            lblMaterial2.Location = new Point(560, 160);
             lblMaterial2.Name = "lblMaterial2";
             lblMaterial2.Size = new Size(67, 21);
             lblMaterial2.TabIndex = 22;
@@ -468,7 +468,7 @@ namespace Milestone_Inventory
             // btnEditInventory3
             // 
             btnEditInventory3.AutoSize = true;
-            btnEditInventory3.Location = new Point(882, 191);
+            btnEditInventory3.Location = new Point(935, 191);
             btnEditInventory3.Name = "btnEditInventory3";
             btnEditInventory3.Size = new Size(75, 25);
             btnEditInventory3.TabIndex = 36;
@@ -478,32 +478,32 @@ namespace Milestone_Inventory
             // 
             // btnIncrease3
             // 
-            btnIncrease3.Location = new Point(840, 192);
+            btnIncrease3.Location = new Point(893, 192);
             btnIncrease3.Name = "btnIncrease3";
             btnIncrease3.Size = new Size(31, 21);
             btnIncrease3.TabIndex = 35;
             btnIncrease3.Text = ">";
             btnIncrease3.UseVisualStyleBackColor = true;
             btnIncrease3.Visible = false;
-            btnIncrease3.Click += Quantity4IncreaseEventHandler;
+            btnIncrease3.Click += Quantity3IncreaseEventHandler;
             // 
             // btnDecrease3
             // 
-            btnDecrease3.Location = new Point(765, 191);
+            btnDecrease3.Location = new Point(818, 191);
             btnDecrease3.Name = "btnDecrease3";
             btnDecrease3.Size = new Size(31, 21);
             btnDecrease3.TabIndex = 34;
             btnDecrease3.Text = "<";
             btnDecrease3.UseVisualStyleBackColor = true;
             btnDecrease3.Visible = false;
-            btnDecrease3.Click += Quantity4DecreaseEventHandler;
+            btnDecrease3.Click += Quantity3DecreaseEventHandler;
             // 
             // lblQuantity3
             // 
             lblQuantity3.AutoSize = true;
             lblQuantity3.BackColor = Color.WhiteSmoke;
             lblQuantity3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity3.Location = new Point(802, 191);
+            lblQuantity3.Location = new Point(855, 191);
             lblQuantity3.Name = "lblQuantity3";
             lblQuantity3.Size = new Size(32, 21);
             lblQuantity3.TabIndex = 33;
@@ -515,7 +515,7 @@ namespace Milestone_Inventory
             lblCost3.AutoSize = true;
             lblCost3.BackColor = Color.WhiteSmoke;
             lblCost3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost3.Location = new Point(699, 191);
+            lblCost3.Location = new Point(737, 191);
             lblCost3.Name = "lblCost3";
             lblCost3.Size = new Size(39, 21);
             lblCost3.TabIndex = 32;
@@ -527,7 +527,7 @@ namespace Milestone_Inventory
             lblMaterial3.AutoSize = true;
             lblMaterial3.BackColor = Color.WhiteSmoke;
             lblMaterial3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial3.Location = new Point(540, 191);
+            lblMaterial3.Location = new Point(560, 191);
             lblMaterial3.Name = "lblMaterial3";
             lblMaterial3.Size = new Size(67, 21);
             lblMaterial3.TabIndex = 31;
@@ -573,7 +573,7 @@ namespace Milestone_Inventory
             // btnEditInventory4
             // 
             btnEditInventory4.AutoSize = true;
-            btnEditInventory4.Location = new Point(882, 221);
+            btnEditInventory4.Location = new Point(935, 221);
             btnEditInventory4.Name = "btnEditInventory4";
             btnEditInventory4.Size = new Size(75, 25);
             btnEditInventory4.TabIndex = 45;
@@ -583,32 +583,32 @@ namespace Milestone_Inventory
             // 
             // btnIncrease4
             // 
-            btnIncrease4.Location = new Point(840, 222);
+            btnIncrease4.Location = new Point(893, 222);
             btnIncrease4.Name = "btnIncrease4";
             btnIncrease4.Size = new Size(31, 21);
             btnIncrease4.TabIndex = 44;
             btnIncrease4.Text = ">";
             btnIncrease4.UseVisualStyleBackColor = true;
             btnIncrease4.Visible = false;
-            btnIncrease4.Click += Quantity5IncreaseEventHandler;
+            btnIncrease4.Click += Quantity4IncreaseEventHandler;
             // 
             // btnDecrease4
             // 
-            btnDecrease4.Location = new Point(765, 221);
+            btnDecrease4.Location = new Point(818, 221);
             btnDecrease4.Name = "btnDecrease4";
             btnDecrease4.Size = new Size(31, 21);
             btnDecrease4.TabIndex = 43;
             btnDecrease4.Text = "<";
             btnDecrease4.UseVisualStyleBackColor = true;
             btnDecrease4.Visible = false;
-            btnDecrease4.Click += Quantity5DecreaseEventHandler;
+            btnDecrease4.Click += Quantity4DecreaseEventHandler;
             // 
             // lblQuantity4
             // 
             lblQuantity4.AutoSize = true;
             lblQuantity4.BackColor = Color.WhiteSmoke;
             lblQuantity4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity4.Location = new Point(802, 221);
+            lblQuantity4.Location = new Point(855, 221);
             lblQuantity4.Name = "lblQuantity4";
             lblQuantity4.Size = new Size(32, 21);
             lblQuantity4.TabIndex = 42;
@@ -620,7 +620,7 @@ namespace Milestone_Inventory
             lblCost4.AutoSize = true;
             lblCost4.BackColor = Color.WhiteSmoke;
             lblCost4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost4.Location = new Point(699, 221);
+            lblCost4.Location = new Point(737, 221);
             lblCost4.Name = "lblCost4";
             lblCost4.Size = new Size(39, 21);
             lblCost4.TabIndex = 41;
@@ -632,7 +632,7 @@ namespace Milestone_Inventory
             lblMaterial4.AutoSize = true;
             lblMaterial4.BackColor = Color.WhiteSmoke;
             lblMaterial4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial4.Location = new Point(540, 221);
+            lblMaterial4.Location = new Point(560, 221);
             lblMaterial4.Name = "lblMaterial4";
             lblMaterial4.Size = new Size(67, 21);
             lblMaterial4.TabIndex = 40;
@@ -678,7 +678,7 @@ namespace Milestone_Inventory
             // btnEditInventory5
             // 
             btnEditInventory5.AutoSize = true;
-            btnEditInventory5.Location = new Point(882, 252);
+            btnEditInventory5.Location = new Point(935, 252);
             btnEditInventory5.Name = "btnEditInventory5";
             btnEditInventory5.Size = new Size(75, 25);
             btnEditInventory5.TabIndex = 54;
@@ -688,32 +688,31 @@ namespace Milestone_Inventory
             // 
             // btnIncrease5
             // 
-            btnIncrease5.Location = new Point(840, 253);
+            btnIncrease5.Location = new Point(893, 253);
             btnIncrease5.Name = "btnIncrease5";
             btnIncrease5.Size = new Size(31, 21);
             btnIncrease5.TabIndex = 53;
             btnIncrease5.Text = ">";
             btnIncrease5.UseVisualStyleBackColor = true;
             btnIncrease5.Visible = false;
-            btnIncrease5.Click += Quantity6IncreaseEventHandler;
+            btnIncrease5.Click += Quantity5IncreaseEventHandler;
             // 
             // btnDecrease5
             // 
-            btnDecrease5.Location = new Point(765, 252);
+            btnDecrease5.Location = new Point(818, 252);
             btnDecrease5.Name = "btnDecrease5";
             btnDecrease5.Size = new Size(31, 21);
             btnDecrease5.TabIndex = 52;
             btnDecrease5.Text = "<";
             btnDecrease5.UseVisualStyleBackColor = true;
             btnDecrease5.Visible = false;
-            btnDecrease5.Click += Quantity6DecreaseEventHandler;
             // 
             // lblQuantity5
             // 
             lblQuantity5.AutoSize = true;
             lblQuantity5.BackColor = Color.WhiteSmoke;
             lblQuantity5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity5.Location = new Point(802, 252);
+            lblQuantity5.Location = new Point(855, 252);
             lblQuantity5.Name = "lblQuantity5";
             lblQuantity5.Size = new Size(32, 21);
             lblQuantity5.TabIndex = 51;
@@ -725,19 +724,20 @@ namespace Milestone_Inventory
             lblCost5.AutoSize = true;
             lblCost5.BackColor = Color.WhiteSmoke;
             lblCost5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost5.Location = new Point(699, 252);
+            lblCost5.Location = new Point(737, 252);
             lblCost5.Name = "lblCost5";
             lblCost5.Size = new Size(39, 21);
             lblCost5.TabIndex = 50;
             lblCost5.Text = "Cost";
             lblCost5.Visible = false;
+            lblCost5.Click += Quantity5DecreaseEventHandler;
             // 
             // lblMaterial5
             // 
             lblMaterial5.AutoSize = true;
             lblMaterial5.BackColor = Color.WhiteSmoke;
             lblMaterial5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial5.Location = new Point(540, 252);
+            lblMaterial5.Location = new Point(560, 252);
             lblMaterial5.Name = "lblMaterial5";
             lblMaterial5.Size = new Size(67, 21);
             lblMaterial5.TabIndex = 49;
@@ -767,7 +767,6 @@ namespace Milestone_Inventory
             lblInventoryItemDescription5.TabIndex = 47;
             lblInventoryItemDescription5.Text = "Inventory Description";
             lblInventoryItemDescription5.Visible = false;
-            lblInventoryItemDescription5.Click += lblInventoryItemDescription6_Click;
             // 
             // lblInventoryItemName5
             // 
@@ -795,7 +794,7 @@ namespace Milestone_Inventory
             // btnEditInventory10
             // 
             btnEditInventory10.AutoSize = true;
-            btnEditInventory10.Location = new Point(882, 407);
+            btnEditInventory10.Location = new Point(935, 407);
             btnEditInventory10.Name = "btnEditInventory10";
             btnEditInventory10.Size = new Size(75, 25);
             btnEditInventory10.TabIndex = 101;
@@ -805,30 +804,32 @@ namespace Milestone_Inventory
             // 
             // btnIncrease10
             // 
-            btnIncrease10.Location = new Point(840, 408);
+            btnIncrease10.Location = new Point(893, 408);
             btnIncrease10.Name = "btnIncrease10";
             btnIncrease10.Size = new Size(31, 21);
             btnIncrease10.TabIndex = 100;
             btnIncrease10.Text = ">";
             btnIncrease10.UseVisualStyleBackColor = true;
             btnIncrease10.Visible = false;
+            btnIncrease10.Click += Quantity10IncreaseEventHandler;
             // 
             // btnDecrease10
             // 
-            btnDecrease10.Location = new Point(765, 407);
+            btnDecrease10.Location = new Point(818, 407);
             btnDecrease10.Name = "btnDecrease10";
             btnDecrease10.Size = new Size(31, 21);
             btnDecrease10.TabIndex = 99;
             btnDecrease10.Text = "<";
             btnDecrease10.UseVisualStyleBackColor = true;
             btnDecrease10.Visible = false;
+            btnDecrease10.Click += Quantity10DecreaseEventHandler;
             // 
             // lblQuantity10
             // 
             lblQuantity10.AutoSize = true;
             lblQuantity10.BackColor = Color.WhiteSmoke;
             lblQuantity10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity10.Location = new Point(802, 407);
+            lblQuantity10.Location = new Point(855, 407);
             lblQuantity10.Name = "lblQuantity10";
             lblQuantity10.Size = new Size(32, 21);
             lblQuantity10.TabIndex = 98;
@@ -840,7 +841,7 @@ namespace Milestone_Inventory
             lblCost10.AutoSize = true;
             lblCost10.BackColor = Color.WhiteSmoke;
             lblCost10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost10.Location = new Point(699, 407);
+            lblCost10.Location = new Point(737, 407);
             lblCost10.Name = "lblCost10";
             lblCost10.Size = new Size(39, 21);
             lblCost10.TabIndex = 97;
@@ -852,7 +853,7 @@ namespace Milestone_Inventory
             lblMaterial10.AutoSize = true;
             lblMaterial10.BackColor = Color.WhiteSmoke;
             lblMaterial10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial10.Location = new Point(540, 407);
+            lblMaterial10.Location = new Point(560, 407);
             lblMaterial10.Name = "lblMaterial10";
             lblMaterial10.Size = new Size(67, 21);
             lblMaterial10.TabIndex = 96;
@@ -898,7 +899,7 @@ namespace Milestone_Inventory
             // btnEditInventory9
             // 
             btnEditInventory9.AutoSize = true;
-            btnEditInventory9.Location = new Point(882, 376);
+            btnEditInventory9.Location = new Point(935, 376);
             btnEditInventory9.Name = "btnEditInventory9";
             btnEditInventory9.Size = new Size(75, 25);
             btnEditInventory9.TabIndex = 92;
@@ -908,30 +909,32 @@ namespace Milestone_Inventory
             // 
             // btnIncrease9
             // 
-            btnIncrease9.Location = new Point(840, 377);
+            btnIncrease9.Location = new Point(893, 377);
             btnIncrease9.Name = "btnIncrease9";
             btnIncrease9.Size = new Size(31, 21);
             btnIncrease9.TabIndex = 91;
             btnIncrease9.Text = ">";
             btnIncrease9.UseVisualStyleBackColor = true;
             btnIncrease9.Visible = false;
+            btnIncrease9.Click += Quantity9IncreaseEventHandler;
             // 
             // btnDecrease9
             // 
-            btnDecrease9.Location = new Point(765, 376);
+            btnDecrease9.Location = new Point(818, 376);
             btnDecrease9.Name = "btnDecrease9";
             btnDecrease9.Size = new Size(31, 21);
             btnDecrease9.TabIndex = 90;
             btnDecrease9.Text = "<";
             btnDecrease9.UseVisualStyleBackColor = true;
             btnDecrease9.Visible = false;
+            btnDecrease9.Click += Quantity9DecreaseEventHandler;
             // 
             // lblQuantity9
             // 
             lblQuantity9.AutoSize = true;
             lblQuantity9.BackColor = Color.WhiteSmoke;
             lblQuantity9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity9.Location = new Point(802, 376);
+            lblQuantity9.Location = new Point(855, 376);
             lblQuantity9.Name = "lblQuantity9";
             lblQuantity9.Size = new Size(32, 21);
             lblQuantity9.TabIndex = 89;
@@ -943,7 +946,7 @@ namespace Milestone_Inventory
             lblCost9.AutoSize = true;
             lblCost9.BackColor = Color.WhiteSmoke;
             lblCost9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost9.Location = new Point(699, 376);
+            lblCost9.Location = new Point(737, 376);
             lblCost9.Name = "lblCost9";
             lblCost9.Size = new Size(39, 21);
             lblCost9.TabIndex = 88;
@@ -955,7 +958,7 @@ namespace Milestone_Inventory
             lblMaterial9.AutoSize = true;
             lblMaterial9.BackColor = Color.WhiteSmoke;
             lblMaterial9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial9.Location = new Point(540, 376);
+            lblMaterial9.Location = new Point(560, 376);
             lblMaterial9.Name = "lblMaterial9";
             lblMaterial9.Size = new Size(67, 21);
             lblMaterial9.TabIndex = 87;
@@ -1001,7 +1004,7 @@ namespace Milestone_Inventory
             // btnEditInventory8
             // 
             btnEditInventory8.AutoSize = true;
-            btnEditInventory8.Location = new Point(882, 346);
+            btnEditInventory8.Location = new Point(935, 346);
             btnEditInventory8.Name = "btnEditInventory8";
             btnEditInventory8.Size = new Size(75, 25);
             btnEditInventory8.TabIndex = 83;
@@ -1011,30 +1014,32 @@ namespace Milestone_Inventory
             // 
             // btnIncrease8
             // 
-            btnIncrease8.Location = new Point(840, 347);
+            btnIncrease8.Location = new Point(893, 347);
             btnIncrease8.Name = "btnIncrease8";
             btnIncrease8.Size = new Size(31, 21);
             btnIncrease8.TabIndex = 82;
             btnIncrease8.Text = ">";
             btnIncrease8.UseVisualStyleBackColor = true;
             btnIncrease8.Visible = false;
+            btnIncrease8.Click += Quantity8IncreaseEventHandler;
             // 
             // btnDecrease8
             // 
-            btnDecrease8.Location = new Point(765, 346);
+            btnDecrease8.Location = new Point(818, 346);
             btnDecrease8.Name = "btnDecrease8";
             btnDecrease8.Size = new Size(31, 21);
             btnDecrease8.TabIndex = 81;
             btnDecrease8.Text = "<";
             btnDecrease8.UseVisualStyleBackColor = true;
             btnDecrease8.Visible = false;
+            btnDecrease8.Click += Quantity8DecreaseEventHandler;
             // 
             // lblQuantity8
             // 
             lblQuantity8.AutoSize = true;
             lblQuantity8.BackColor = Color.WhiteSmoke;
             lblQuantity8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity8.Location = new Point(802, 346);
+            lblQuantity8.Location = new Point(855, 346);
             lblQuantity8.Name = "lblQuantity8";
             lblQuantity8.Size = new Size(32, 21);
             lblQuantity8.TabIndex = 80;
@@ -1046,7 +1051,7 @@ namespace Milestone_Inventory
             lblCost8.AutoSize = true;
             lblCost8.BackColor = Color.WhiteSmoke;
             lblCost8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost8.Location = new Point(699, 346);
+            lblCost8.Location = new Point(737, 346);
             lblCost8.Name = "lblCost8";
             lblCost8.Size = new Size(39, 21);
             lblCost8.TabIndex = 79;
@@ -1058,7 +1063,7 @@ namespace Milestone_Inventory
             lblMaterial8.AutoSize = true;
             lblMaterial8.BackColor = Color.WhiteSmoke;
             lblMaterial8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial8.Location = new Point(540, 346);
+            lblMaterial8.Location = new Point(560, 346);
             lblMaterial8.Name = "lblMaterial8";
             lblMaterial8.Size = new Size(67, 21);
             lblMaterial8.TabIndex = 78;
@@ -1104,7 +1109,7 @@ namespace Milestone_Inventory
             // btnEditInventory7
             // 
             btnEditInventory7.AutoSize = true;
-            btnEditInventory7.Location = new Point(882, 315);
+            btnEditInventory7.Location = new Point(935, 315);
             btnEditInventory7.Name = "btnEditInventory7";
             btnEditInventory7.Size = new Size(75, 25);
             btnEditInventory7.TabIndex = 74;
@@ -1114,30 +1119,32 @@ namespace Milestone_Inventory
             // 
             // btnIncrease7
             // 
-            btnIncrease7.Location = new Point(840, 316);
+            btnIncrease7.Location = new Point(893, 316);
             btnIncrease7.Name = "btnIncrease7";
             btnIncrease7.Size = new Size(31, 21);
             btnIncrease7.TabIndex = 73;
             btnIncrease7.Text = ">";
             btnIncrease7.UseVisualStyleBackColor = true;
             btnIncrease7.Visible = false;
+            btnIncrease7.Click += Quantity7IncreaseEventHandler;
             // 
             // btnDecrease7
             // 
-            btnDecrease7.Location = new Point(765, 315);
+            btnDecrease7.Location = new Point(818, 315);
             btnDecrease7.Name = "btnDecrease7";
             btnDecrease7.Size = new Size(31, 21);
             btnDecrease7.TabIndex = 72;
             btnDecrease7.Text = "<";
             btnDecrease7.UseVisualStyleBackColor = true;
             btnDecrease7.Visible = false;
+            btnDecrease7.Click += Quantity7DecreaseEventHandler;
             // 
             // lblQuantity7
             // 
             lblQuantity7.AutoSize = true;
             lblQuantity7.BackColor = Color.WhiteSmoke;
             lblQuantity7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity7.Location = new Point(802, 315);
+            lblQuantity7.Location = new Point(855, 315);
             lblQuantity7.Name = "lblQuantity7";
             lblQuantity7.Size = new Size(32, 21);
             lblQuantity7.TabIndex = 71;
@@ -1149,7 +1156,7 @@ namespace Milestone_Inventory
             lblCost7.AutoSize = true;
             lblCost7.BackColor = Color.WhiteSmoke;
             lblCost7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost7.Location = new Point(699, 315);
+            lblCost7.Location = new Point(737, 315);
             lblCost7.Name = "lblCost7";
             lblCost7.Size = new Size(39, 21);
             lblCost7.TabIndex = 70;
@@ -1161,7 +1168,7 @@ namespace Milestone_Inventory
             lblMaterial7.AutoSize = true;
             lblMaterial7.BackColor = Color.WhiteSmoke;
             lblMaterial7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial7.Location = new Point(540, 315);
+            lblMaterial7.Location = new Point(560, 315);
             lblMaterial7.Name = "lblMaterial7";
             lblMaterial7.Size = new Size(67, 21);
             lblMaterial7.TabIndex = 69;
@@ -1207,7 +1214,7 @@ namespace Milestone_Inventory
             // btnEditInventory6
             // 
             btnEditInventory6.AutoSize = true;
-            btnEditInventory6.Location = new Point(882, 284);
+            btnEditInventory6.Location = new Point(935, 284);
             btnEditInventory6.Name = "btnEditInventory6";
             btnEditInventory6.Size = new Size(75, 25);
             btnEditInventory6.TabIndex = 65;
@@ -1217,17 +1224,18 @@ namespace Milestone_Inventory
             // 
             // btnIncrease6
             // 
-            btnIncrease6.Location = new Point(840, 285);
+            btnIncrease6.Location = new Point(893, 285);
             btnIncrease6.Name = "btnIncrease6";
             btnIncrease6.Size = new Size(31, 21);
             btnIncrease6.TabIndex = 64;
             btnIncrease6.Text = ">";
             btnIncrease6.UseVisualStyleBackColor = true;
             btnIncrease6.Visible = false;
+            btnIncrease6.Click += Quantity6IncreaseEventHandler;
             // 
             // btnDecrease6
             // 
-            btnDecrease6.Location = new Point(765, 284);
+            btnDecrease6.Location = new Point(818, 284);
             btnDecrease6.Name = "btnDecrease6";
             btnDecrease6.Size = new Size(31, 21);
             btnDecrease6.TabIndex = 63;
@@ -1240,7 +1248,7 @@ namespace Milestone_Inventory
             lblQuantity6.AutoSize = true;
             lblQuantity6.BackColor = Color.WhiteSmoke;
             lblQuantity6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity6.Location = new Point(802, 284);
+            lblQuantity6.Location = new Point(855, 284);
             lblQuantity6.Name = "lblQuantity6";
             lblQuantity6.Size = new Size(32, 21);
             lblQuantity6.TabIndex = 62;
@@ -1252,19 +1260,20 @@ namespace Milestone_Inventory
             lblCost6.AutoSize = true;
             lblCost6.BackColor = Color.WhiteSmoke;
             lblCost6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost6.Location = new Point(699, 284);
+            lblCost6.Location = new Point(737, 284);
             lblCost6.Name = "lblCost6";
             lblCost6.Size = new Size(39, 21);
             lblCost6.TabIndex = 61;
             lblCost6.Text = "Cost";
             lblCost6.Visible = false;
+            lblCost6.Click += Quantity6DecreaseEventhandler;
             // 
             // lblMaterial6
             // 
             lblMaterial6.AutoSize = true;
             lblMaterial6.BackColor = Color.WhiteSmoke;
             lblMaterial6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial6.Location = new Point(540, 284);
+            lblMaterial6.Location = new Point(560, 284);
             lblMaterial6.Name = "lblMaterial6";
             lblMaterial6.Size = new Size(67, 21);
             lblMaterial6.TabIndex = 60;
@@ -1335,7 +1344,7 @@ namespace Milestone_Inventory
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             BackColor = Color.PowderBlue;
-            ClientSize = new Size(977, 516);
+            ClientSize = new Size(1033, 516);
             Controls.Add(lbl1);
             Controls.Add(btnRefresh);
             Controls.Add(btnEditInventory10);

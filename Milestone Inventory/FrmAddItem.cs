@@ -72,6 +72,9 @@ namespace Milestone_Inventory
                 txtAddCost.Text = "";
                 txtAddQuantity.Text = "";
 
+                //Close StreamReader so that functions from FrmInventoryList can read text
+                outputFile.Close();
+
             }
             catch(Exception ex)
             {
