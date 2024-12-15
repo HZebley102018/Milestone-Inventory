@@ -76,6 +76,7 @@ namespace Milestone_Inventory
             // 
             txtAddName.BackColor = Color.WhiteSmoke;
             txtAddName.Location = new Point(222, 83);
+            txtAddName.MaxLength = 20;
             txtAddName.Name = "txtAddName";
             txtAddName.Size = new Size(422, 26);
             txtAddName.TabIndex = 2;
@@ -84,6 +85,7 @@ namespace Milestone_Inventory
             // 
             txtAddDescription.BackColor = Color.WhiteSmoke;
             txtAddDescription.Location = new Point(222, 135);
+            txtAddDescription.MaxLength = 20;
             txtAddDescription.Name = "txtAddDescription";
             txtAddDescription.Size = new Size(422, 26);
             txtAddDescription.TabIndex = 4;
@@ -103,6 +105,7 @@ namespace Milestone_Inventory
             // 
             txtAddUnitSize.BackColor = Color.WhiteSmoke;
             txtAddUnitSize.Location = new Point(222, 190);
+            txtAddUnitSize.MaxLength = 20;
             txtAddUnitSize.Name = "txtAddUnitSize";
             txtAddUnitSize.Size = new Size(422, 26);
             txtAddUnitSize.TabIndex = 6;
@@ -122,6 +125,7 @@ namespace Milestone_Inventory
             // 
             txtAddMaterial.BackColor = Color.WhiteSmoke;
             txtAddMaterial.Location = new Point(222, 242);
+            txtAddMaterial.MaxLength = 20;
             txtAddMaterial.Name = "txtAddMaterial";
             txtAddMaterial.Size = new Size(422, 26);
             txtAddMaterial.TabIndex = 8;
@@ -141,6 +145,7 @@ namespace Milestone_Inventory
             // 
             txtAddCost.BackColor = Color.WhiteSmoke;
             txtAddCost.Location = new Point(222, 293);
+            txtAddCost.MaxLength = 20;
             txtAddCost.Name = "txtAddCost";
             txtAddCost.Size = new Size(422, 26);
             txtAddCost.TabIndex = 10;
@@ -172,6 +177,7 @@ namespace Milestone_Inventory
             // 
             txtAddQuantity.BackColor = Color.WhiteSmoke;
             txtAddQuantity.Location = new Point(222, 341);
+            txtAddQuantity.MaxLength = 20;
             txtAddQuantity.Name = "txtAddQuantity";
             txtAddQuantity.Size = new Size(422, 26);
             txtAddQuantity.TabIndex = 13;

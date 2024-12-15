@@ -40,12 +40,6 @@ namespace Milestone_Inventory
             fileSystemWatcher1 = new FileSystemWatcher();
             lblListHeader = new Label();
             textBox1 = new TextBox();
-            lblInventoryItemName = new Label();
-            lblInventoryItemDescription = new Label();
-            lblUnitSize = new Label();
-            lblMaterial = new Label();
-            lblCost = new Label();
-            lblQuantity = new Label();
             lblQuantity1 = new Label();
             lblCost1 = new Label();
             lblMaterial1 = new Label();
@@ -92,9 +86,6 @@ namespace Milestone_Inventory
             lblInventoryItemDescription5 = new Label();
             lblInventoryItemName5 = new Label();
             btnAddItem = new Button();
-            btnEditInventory10 = new Button();
-            btnIncrease10 = new Button();
-            btnDecrease10 = new Button();
             lblQuantity10 = new Label();
             lblCost10 = new Label();
             lblMaterial10 = new Label();
@@ -138,7 +129,11 @@ namespace Milestone_Inventory
             lblInventoryItemDescription6 = new Label();
             lblInventoryItemName6 = new Label();
             btnRefresh = new Button();
-            lbl1 = new Label();
+            lblInventoryDisplay = new Label();
+            cmbIncreaseQty = new ComboBox();
+            cmbDecreaseQty = new ComboBox();
+            lblIncreaseQty = new Label();
+            lblDecreaseQty = new Label();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             SuspendLayout();
             // 
@@ -180,7 +175,6 @@ namespace Milestone_Inventory
             lblListHeader.Size = new Size(133, 26);
             lblListHeader.TabIndex = 2;
             lblListHeader.Text = "Inventory List";
-            lblListHeader.Click += label1_Click;
             // 
             // textBox1
             // 
@@ -189,1132 +183,621 @@ namespace Milestone_Inventory
             textBox1.Size = new Size(177, 23);
             textBox1.TabIndex = 3;
             // 
-            // lblInventoryItemName
-            // 
-            lblInventoryItemName.AutoSize = true;
-            lblInventoryItemName.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName.Location = new Point(21, 98);
-            lblInventoryItemName.Name = "lblInventoryItemName";
-            lblInventoryItemName.Size = new Size(131, 21);
-            lblInventoryItemName.TabIndex = 4;
-            lblInventoryItemName.Text = "Inventory Name";
-            // 
-            // lblInventoryItemDescription
-            // 
-            lblInventoryItemDescription.AutoSize = true;
-            lblInventoryItemDescription.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemDescription.Location = new Point(197, 98);
-            lblInventoryItemDescription.Name = "lblInventoryItemDescription";
-            lblInventoryItemDescription.Size = new Size(173, 21);
-            lblInventoryItemDescription.TabIndex = 5;
-            lblInventoryItemDescription.Text = "Inventory Description";
-            // 
-            // lblUnitSize
-            // 
-            lblUnitSize.AutoSize = true;
-            lblUnitSize.BackColor = Color.WhiteSmoke;
-            lblUnitSize.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblUnitSize.Location = new Point(423, 98);
-            lblUnitSize.Name = "lblUnitSize";
-            lblUnitSize.Size = new Size(79, 21);
-            lblUnitSize.TabIndex = 6;
-            lblUnitSize.Text = "Unit Size";
-            // 
-            // lblMaterial
-            // 
-            lblMaterial.AutoSize = true;
-            lblMaterial.BackColor = Color.WhiteSmoke;
-            lblMaterial.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMaterial.Location = new Point(560, 98);
-            lblMaterial.Name = "lblMaterial";
-            lblMaterial.Size = new Size(75, 21);
-            lblMaterial.TabIndex = 7;
-            lblMaterial.Text = "Material";
-            // 
-            // lblCost
-            // 
-            lblCost.AutoSize = true;
-            lblCost.BackColor = Color.WhiteSmoke;
-            lblCost.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCost.Location = new Point(737, 98);
-            lblCost.Name = "lblCost";
-            lblCost.Size = new Size(43, 21);
-            lblCost.TabIndex = 8;
-            lblCost.Text = "Cost";
-            // 
-            // lblQuantity
-            // 
-            lblQuantity.AutoSize = true;
-            lblQuantity.BackColor = Color.WhiteSmoke;
-            lblQuantity.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblQuantity.Location = new Point(852, 96);
-            lblQuantity.Name = "lblQuantity";
-            lblQuantity.Size = new Size(35, 21);
-            lblQuantity.TabIndex = 9;
-            lblQuantity.Text = "Qty";
-            // 
             // lblQuantity1
             // 
-            lblQuantity1.AutoSize = true;
-            lblQuantity1.BackColor = Color.WhiteSmoke;
-            lblQuantity1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity1.Location = new Point(855, 129);
+            lblQuantity1.Location = new Point(0, 0);
             lblQuantity1.Name = "lblQuantity1";
-            lblQuantity1.Size = new Size(32, 21);
-            lblQuantity1.TabIndex = 15;
-            lblQuantity1.Text = "Qty";
-            lblQuantity1.Visible = false;
+            lblQuantity1.Size = new Size(100, 23);
+            lblQuantity1.TabIndex = 194;
             // 
             // lblCost1
             // 
-            lblCost1.AutoSize = true;
-            lblCost1.BackColor = Color.WhiteSmoke;
-            lblCost1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost1.Location = new Point(737, 129);
+            lblCost1.Location = new Point(0, 0);
             lblCost1.Name = "lblCost1";
-            lblCost1.Size = new Size(39, 21);
-            lblCost1.TabIndex = 14;
-            lblCost1.Text = "Cost";
-            lblCost1.Visible = false;
+            lblCost1.Size = new Size(100, 23);
+            lblCost1.TabIndex = 195;
             // 
             // lblMaterial1
             // 
-            lblMaterial1.AutoSize = true;
-            lblMaterial1.BackColor = Color.WhiteSmoke;
-            lblMaterial1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial1.Location = new Point(560, 129);
+            lblMaterial1.Location = new Point(0, 0);
             lblMaterial1.Name = "lblMaterial1";
-            lblMaterial1.Size = new Size(67, 21);
-            lblMaterial1.TabIndex = 13;
-            lblMaterial1.Text = "Material";
-            lblMaterial1.Visible = false;
+            lblMaterial1.Size = new Size(100, 23);
+            lblMaterial1.TabIndex = 196;
             // 
             // lblUnitSize1
             // 
-            lblUnitSize1.AutoSize = true;
-            lblUnitSize1.BackColor = Color.WhiteSmoke;
-            lblUnitSize1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize1.Location = new Point(423, 129);
+            lblUnitSize1.Location = new Point(0, 0);
             lblUnitSize1.Name = "lblUnitSize1";
-            lblUnitSize1.Size = new Size(70, 21);
-            lblUnitSize1.TabIndex = 12;
-            lblUnitSize1.Text = "Unit Size";
-            lblUnitSize1.Visible = false;
+            lblUnitSize1.Size = new Size(100, 23);
+            lblUnitSize1.TabIndex = 197;
             // 
             // lblInventoryItemDescription1
             // 
-            lblInventoryItemDescription1.AutoSize = true;
-            lblInventoryItemDescription1.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription1.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription1.Location = new Point(197, 129);
+            lblInventoryItemDescription1.Location = new Point(0, 0);
             lblInventoryItemDescription1.Name = "lblInventoryItemDescription1";
-            lblInventoryItemDescription1.Size = new Size(152, 21);
-            lblInventoryItemDescription1.TabIndex = 11;
-            lblInventoryItemDescription1.Text = "Inventory Description";
-            lblInventoryItemDescription1.Visible = false;
+            lblInventoryItemDescription1.Size = new Size(100, 23);
+            lblInventoryItemDescription1.TabIndex = 198;
             // 
             // lblInventoryItemName1
             // 
-            lblInventoryItemName1.AutoSize = true;
-            lblInventoryItemName1.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName1.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName1.Location = new Point(21, 129);
+            lblInventoryItemName1.Location = new Point(0, 0);
             lblInventoryItemName1.Name = "lblInventoryItemName1";
-            lblInventoryItemName1.Size = new Size(131, 21);
-            lblInventoryItemName1.TabIndex = 10;
-            lblInventoryItemName1.Text = "Inventory Name";
-            lblInventoryItemName1.Visible = false;
+            lblInventoryItemName1.Size = new Size(100, 23);
+            lblInventoryItemName1.TabIndex = 199;
             // 
             // btnDecrease1
             // 
-            btnDecrease1.Location = new Point(818, 129);
+            btnDecrease1.Location = new Point(0, 0);
             btnDecrease1.Name = "btnDecrease1";
-            btnDecrease1.Size = new Size(31, 21);
-            btnDecrease1.TabIndex = 16;
-            btnDecrease1.Text = "<";
-            btnDecrease1.UseVisualStyleBackColor = true;
-            btnDecrease1.Visible = false;
-            btnDecrease1.Click += Quantity1DecreaseEventHandler;
+            btnDecrease1.Size = new Size(75, 23);
+            btnDecrease1.TabIndex = 193;
             // 
             // btnIncrease1
             // 
-            btnIncrease1.Location = new Point(893, 130);
+            btnIncrease1.Location = new Point(0, 0);
             btnIncrease1.Name = "btnIncrease1";
-            btnIncrease1.Size = new Size(31, 21);
-            btnIncrease1.TabIndex = 17;
-            btnIncrease1.Text = ">";
-            btnIncrease1.UseVisualStyleBackColor = true;
-            btnIncrease1.Visible = false;
-            btnIncrease1.Click += Quantity1IncreaseEventHandler;
+            btnIncrease1.Size = new Size(75, 23);
+            btnIncrease1.TabIndex = 192;
             // 
             // btnEditInventory1
             // 
-            btnEditInventory1.AutoSize = true;
-            btnEditInventory1.Location = new Point(935, 129);
+            btnEditInventory1.Location = new Point(0, 0);
             btnEditInventory1.Name = "btnEditInventory1";
-            btnEditInventory1.Size = new Size(75, 25);
-            btnEditInventory1.TabIndex = 18;
-            btnEditInventory1.Text = "Edit";
-            btnEditInventory1.UseVisualStyleBackColor = true;
-            btnEditInventory1.Visible = false;
+            btnEditInventory1.Size = new Size(75, 23);
+            btnEditInventory1.TabIndex = 191;
             // 
             // btnEditInventory2
             // 
-            btnEditInventory2.AutoSize = true;
-            btnEditInventory2.Location = new Point(935, 160);
+            btnEditInventory2.Location = new Point(0, 0);
             btnEditInventory2.Name = "btnEditInventory2";
-            btnEditInventory2.Size = new Size(75, 25);
-            btnEditInventory2.TabIndex = 27;
-            btnEditInventory2.Text = "Edit";
-            btnEditInventory2.UseVisualStyleBackColor = true;
-            btnEditInventory2.Visible = false;
+            btnEditInventory2.Size = new Size(75, 23);
+            btnEditInventory2.TabIndex = 182;
             // 
             // btnIncrease2
             // 
-            btnIncrease2.Location = new Point(893, 161);
+            btnIncrease2.Location = new Point(0, 0);
             btnIncrease2.Name = "btnIncrease2";
-            btnIncrease2.Size = new Size(31, 21);
-            btnIncrease2.TabIndex = 26;
-            btnIncrease2.Text = ">";
-            btnIncrease2.UseVisualStyleBackColor = true;
-            btnIncrease2.Visible = false;
-            btnIncrease2.Click += Quantity2IncreaseEventHandler;
+            btnIncrease2.Size = new Size(75, 23);
+            btnIncrease2.TabIndex = 183;
             // 
             // btnDecrease2
             // 
-            btnDecrease2.Location = new Point(818, 160);
+            btnDecrease2.Location = new Point(0, 0);
             btnDecrease2.Name = "btnDecrease2";
-            btnDecrease2.Size = new Size(31, 21);
-            btnDecrease2.TabIndex = 25;
-            btnDecrease2.Text = "<";
-            btnDecrease2.UseVisualStyleBackColor = true;
-            btnDecrease2.Visible = false;
-            btnDecrease2.Click += Quantity2DecreaseEventHandler;
+            btnDecrease2.Size = new Size(75, 23);
+            btnDecrease2.TabIndex = 184;
             // 
             // lblQuantity2
             // 
-            lblQuantity2.AutoSize = true;
-            lblQuantity2.BackColor = Color.WhiteSmoke;
-            lblQuantity2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity2.Location = new Point(855, 160);
+            lblQuantity2.Location = new Point(0, 0);
             lblQuantity2.Name = "lblQuantity2";
-            lblQuantity2.Size = new Size(32, 21);
-            lblQuantity2.TabIndex = 24;
-            lblQuantity2.Text = "Qty";
-            lblQuantity2.Visible = false;
+            lblQuantity2.Size = new Size(100, 23);
+            lblQuantity2.TabIndex = 185;
             // 
             // lblCost2
             // 
-            lblCost2.AutoSize = true;
-            lblCost2.BackColor = Color.WhiteSmoke;
-            lblCost2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost2.Location = new Point(737, 160);
+            lblCost2.Location = new Point(0, 0);
             lblCost2.Name = "lblCost2";
-            lblCost2.Size = new Size(39, 21);
-            lblCost2.TabIndex = 23;
-            lblCost2.Text = "Cost";
-            lblCost2.Visible = false;
+            lblCost2.Size = new Size(100, 23);
+            lblCost2.TabIndex = 186;
             // 
             // lblMaterial2
             // 
-            lblMaterial2.AutoSize = true;
-            lblMaterial2.BackColor = Color.WhiteSmoke;
-            lblMaterial2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial2.Location = new Point(560, 160);
+            lblMaterial2.Location = new Point(0, 0);
             lblMaterial2.Name = "lblMaterial2";
-            lblMaterial2.Size = new Size(67, 21);
-            lblMaterial2.TabIndex = 22;
-            lblMaterial2.Text = "Material";
-            lblMaterial2.Visible = false;
+            lblMaterial2.Size = new Size(100, 23);
+            lblMaterial2.TabIndex = 187;
             // 
             // lblUnitSize2
             // 
-            lblUnitSize2.AutoSize = true;
-            lblUnitSize2.BackColor = Color.WhiteSmoke;
-            lblUnitSize2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize2.Location = new Point(423, 160);
+            lblUnitSize2.Location = new Point(0, 0);
             lblUnitSize2.Name = "lblUnitSize2";
-            lblUnitSize2.Size = new Size(70, 21);
-            lblUnitSize2.TabIndex = 21;
-            lblUnitSize2.Text = "Unit Size";
-            lblUnitSize2.Visible = false;
+            lblUnitSize2.Size = new Size(100, 23);
+            lblUnitSize2.TabIndex = 188;
             // 
             // lblInventoryItemDescription2
             // 
-            lblInventoryItemDescription2.AutoSize = true;
-            lblInventoryItemDescription2.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription2.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription2.Location = new Point(197, 160);
+            lblInventoryItemDescription2.Location = new Point(0, 0);
             lblInventoryItemDescription2.Name = "lblInventoryItemDescription2";
-            lblInventoryItemDescription2.Size = new Size(152, 21);
-            lblInventoryItemDescription2.TabIndex = 20;
-            lblInventoryItemDescription2.Text = "Inventory Description";
-            lblInventoryItemDescription2.Visible = false;
+            lblInventoryItemDescription2.Size = new Size(100, 23);
+            lblInventoryItemDescription2.TabIndex = 189;
             // 
             // lblInventoryItemName2
             // 
-            lblInventoryItemName2.AutoSize = true;
-            lblInventoryItemName2.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName2.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName2.Location = new Point(21, 160);
+            lblInventoryItemName2.Location = new Point(0, 0);
             lblInventoryItemName2.Name = "lblInventoryItemName2";
-            lblInventoryItemName2.Size = new Size(131, 21);
-            lblInventoryItemName2.TabIndex = 19;
-            lblInventoryItemName2.Text = "Inventory Name";
-            lblInventoryItemName2.Visible = false;
+            lblInventoryItemName2.Size = new Size(100, 23);
+            lblInventoryItemName2.TabIndex = 190;
             // 
             // btnEditInventory3
             // 
-            btnEditInventory3.AutoSize = true;
-            btnEditInventory3.Location = new Point(935, 191);
+            btnEditInventory3.Location = new Point(0, 0);
             btnEditInventory3.Name = "btnEditInventory3";
-            btnEditInventory3.Size = new Size(75, 25);
-            btnEditInventory3.TabIndex = 36;
-            btnEditInventory3.Text = "Edit";
-            btnEditInventory3.UseVisualStyleBackColor = true;
-            btnEditInventory3.Visible = false;
+            btnEditInventory3.Size = new Size(75, 23);
+            btnEditInventory3.TabIndex = 173;
             // 
             // btnIncrease3
             // 
-            btnIncrease3.Location = new Point(893, 192);
+            btnIncrease3.Location = new Point(0, 0);
             btnIncrease3.Name = "btnIncrease3";
-            btnIncrease3.Size = new Size(31, 21);
-            btnIncrease3.TabIndex = 35;
-            btnIncrease3.Text = ">";
-            btnIncrease3.UseVisualStyleBackColor = true;
-            btnIncrease3.Visible = false;
-            btnIncrease3.Click += Quantity3IncreaseEventHandler;
+            btnIncrease3.Size = new Size(75, 23);
+            btnIncrease3.TabIndex = 174;
             // 
             // btnDecrease3
             // 
-            btnDecrease3.Location = new Point(818, 191);
+            btnDecrease3.Location = new Point(0, 0);
             btnDecrease3.Name = "btnDecrease3";
-            btnDecrease3.Size = new Size(31, 21);
-            btnDecrease3.TabIndex = 34;
-            btnDecrease3.Text = "<";
-            btnDecrease3.UseVisualStyleBackColor = true;
-            btnDecrease3.Visible = false;
-            btnDecrease3.Click += Quantity3DecreaseEventHandler;
+            btnDecrease3.Size = new Size(75, 23);
+            btnDecrease3.TabIndex = 175;
             // 
             // lblQuantity3
             // 
-            lblQuantity3.AutoSize = true;
-            lblQuantity3.BackColor = Color.WhiteSmoke;
-            lblQuantity3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity3.Location = new Point(855, 191);
+            lblQuantity3.Location = new Point(0, 0);
             lblQuantity3.Name = "lblQuantity3";
-            lblQuantity3.Size = new Size(32, 21);
-            lblQuantity3.TabIndex = 33;
-            lblQuantity3.Text = "Qty";
-            lblQuantity3.Visible = false;
+            lblQuantity3.Size = new Size(100, 23);
+            lblQuantity3.TabIndex = 176;
             // 
             // lblCost3
             // 
-            lblCost3.AutoSize = true;
-            lblCost3.BackColor = Color.WhiteSmoke;
-            lblCost3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost3.Location = new Point(737, 191);
+            lblCost3.Location = new Point(0, 0);
             lblCost3.Name = "lblCost3";
-            lblCost3.Size = new Size(39, 21);
-            lblCost3.TabIndex = 32;
-            lblCost3.Text = "Cost";
-            lblCost3.Visible = false;
+            lblCost3.Size = new Size(100, 23);
+            lblCost3.TabIndex = 177;
             // 
             // lblMaterial3
             // 
-            lblMaterial3.AutoSize = true;
-            lblMaterial3.BackColor = Color.WhiteSmoke;
-            lblMaterial3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial3.Location = new Point(560, 191);
+            lblMaterial3.Location = new Point(0, 0);
             lblMaterial3.Name = "lblMaterial3";
-            lblMaterial3.Size = new Size(67, 21);
-            lblMaterial3.TabIndex = 31;
-            lblMaterial3.Text = "Material";
-            lblMaterial3.Visible = false;
+            lblMaterial3.Size = new Size(100, 23);
+            lblMaterial3.TabIndex = 178;
             // 
             // lblUnitSize3
             // 
-            lblUnitSize3.AutoSize = true;
-            lblUnitSize3.BackColor = Color.WhiteSmoke;
-            lblUnitSize3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize3.Location = new Point(423, 191);
+            lblUnitSize3.Location = new Point(0, 0);
             lblUnitSize3.Name = "lblUnitSize3";
-            lblUnitSize3.Size = new Size(70, 21);
-            lblUnitSize3.TabIndex = 30;
-            lblUnitSize3.Text = "Unit Size";
-            lblUnitSize3.Visible = false;
+            lblUnitSize3.Size = new Size(100, 23);
+            lblUnitSize3.TabIndex = 179;
             // 
             // lblInventoryItemDescription3
             // 
-            lblInventoryItemDescription3.AutoSize = true;
-            lblInventoryItemDescription3.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription3.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription3.Location = new Point(197, 191);
+            lblInventoryItemDescription3.Location = new Point(0, 0);
             lblInventoryItemDescription3.Name = "lblInventoryItemDescription3";
-            lblInventoryItemDescription3.Size = new Size(152, 21);
-            lblInventoryItemDescription3.TabIndex = 29;
-            lblInventoryItemDescription3.Text = "Inventory Description";
-            lblInventoryItemDescription3.Visible = false;
+            lblInventoryItemDescription3.Size = new Size(100, 23);
+            lblInventoryItemDescription3.TabIndex = 180;
             // 
             // lblInventoryItemName3
             // 
-            lblInventoryItemName3.AutoSize = true;
-            lblInventoryItemName3.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName3.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName3.Location = new Point(21, 191);
+            lblInventoryItemName3.Location = new Point(0, 0);
             lblInventoryItemName3.Name = "lblInventoryItemName3";
-            lblInventoryItemName3.Size = new Size(131, 21);
-            lblInventoryItemName3.TabIndex = 28;
-            lblInventoryItemName3.Text = "Inventory Name";
-            lblInventoryItemName3.Visible = false;
+            lblInventoryItemName3.Size = new Size(100, 23);
+            lblInventoryItemName3.TabIndex = 181;
             // 
             // btnEditInventory4
             // 
-            btnEditInventory4.AutoSize = true;
-            btnEditInventory4.Location = new Point(935, 221);
+            btnEditInventory4.Location = new Point(0, 0);
             btnEditInventory4.Name = "btnEditInventory4";
-            btnEditInventory4.Size = new Size(75, 25);
-            btnEditInventory4.TabIndex = 45;
-            btnEditInventory4.Text = "Edit";
-            btnEditInventory4.UseVisualStyleBackColor = true;
-            btnEditInventory4.Visible = false;
+            btnEditInventory4.Size = new Size(75, 23);
+            btnEditInventory4.TabIndex = 164;
             // 
             // btnIncrease4
             // 
-            btnIncrease4.Location = new Point(893, 222);
+            btnIncrease4.Location = new Point(0, 0);
             btnIncrease4.Name = "btnIncrease4";
-            btnIncrease4.Size = new Size(31, 21);
-            btnIncrease4.TabIndex = 44;
-            btnIncrease4.Text = ">";
-            btnIncrease4.UseVisualStyleBackColor = true;
-            btnIncrease4.Visible = false;
-            btnIncrease4.Click += Quantity4IncreaseEventHandler;
+            btnIncrease4.Size = new Size(75, 23);
+            btnIncrease4.TabIndex = 165;
             // 
             // btnDecrease4
             // 
-            btnDecrease4.Location = new Point(818, 221);
+            btnDecrease4.Location = new Point(0, 0);
             btnDecrease4.Name = "btnDecrease4";
-            btnDecrease4.Size = new Size(31, 21);
-            btnDecrease4.TabIndex = 43;
-            btnDecrease4.Text = "<";
-            btnDecrease4.UseVisualStyleBackColor = true;
-            btnDecrease4.Visible = false;
-            btnDecrease4.Click += Quantity4DecreaseEventHandler;
+            btnDecrease4.Size = new Size(75, 23);
+            btnDecrease4.TabIndex = 166;
             // 
             // lblQuantity4
             // 
-            lblQuantity4.AutoSize = true;
-            lblQuantity4.BackColor = Color.WhiteSmoke;
-            lblQuantity4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity4.Location = new Point(855, 221);
+            lblQuantity4.Location = new Point(0, 0);
             lblQuantity4.Name = "lblQuantity4";
-            lblQuantity4.Size = new Size(32, 21);
-            lblQuantity4.TabIndex = 42;
-            lblQuantity4.Text = "Qty";
-            lblQuantity4.Visible = false;
+            lblQuantity4.Size = new Size(100, 23);
+            lblQuantity4.TabIndex = 167;
             // 
             // lblCost4
             // 
-            lblCost4.AutoSize = true;
-            lblCost4.BackColor = Color.WhiteSmoke;
-            lblCost4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost4.Location = new Point(737, 221);
+            lblCost4.Location = new Point(0, 0);
             lblCost4.Name = "lblCost4";
-            lblCost4.Size = new Size(39, 21);
-            lblCost4.TabIndex = 41;
-            lblCost4.Text = "Cost";
-            lblCost4.Visible = false;
+            lblCost4.Size = new Size(100, 23);
+            lblCost4.TabIndex = 168;
             // 
             // lblMaterial4
             // 
-            lblMaterial4.AutoSize = true;
-            lblMaterial4.BackColor = Color.WhiteSmoke;
-            lblMaterial4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial4.Location = new Point(560, 221);
+            lblMaterial4.Location = new Point(0, 0);
             lblMaterial4.Name = "lblMaterial4";
-            lblMaterial4.Size = new Size(67, 21);
-            lblMaterial4.TabIndex = 40;
-            lblMaterial4.Text = "Material";
-            lblMaterial4.Visible = false;
+            lblMaterial4.Size = new Size(100, 23);
+            lblMaterial4.TabIndex = 169;
             // 
             // lblUnitSize4
             // 
-            lblUnitSize4.AutoSize = true;
-            lblUnitSize4.BackColor = Color.WhiteSmoke;
-            lblUnitSize4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize4.Location = new Point(423, 221);
+            lblUnitSize4.Location = new Point(0, 0);
             lblUnitSize4.Name = "lblUnitSize4";
-            lblUnitSize4.Size = new Size(70, 21);
-            lblUnitSize4.TabIndex = 39;
-            lblUnitSize4.Text = "Unit Size";
-            lblUnitSize4.Visible = false;
+            lblUnitSize4.Size = new Size(100, 23);
+            lblUnitSize4.TabIndex = 170;
             // 
             // lblInventoryItemDescription4
             // 
-            lblInventoryItemDescription4.AutoSize = true;
-            lblInventoryItemDescription4.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription4.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription4.Location = new Point(197, 221);
+            lblInventoryItemDescription4.Location = new Point(0, 0);
             lblInventoryItemDescription4.Name = "lblInventoryItemDescription4";
-            lblInventoryItemDescription4.Size = new Size(152, 21);
-            lblInventoryItemDescription4.TabIndex = 38;
-            lblInventoryItemDescription4.Text = "Inventory Description";
-            lblInventoryItemDescription4.Visible = false;
+            lblInventoryItemDescription4.Size = new Size(100, 23);
+            lblInventoryItemDescription4.TabIndex = 171;
             // 
             // lblInventoryItemName4
             // 
-            lblInventoryItemName4.AutoSize = true;
-            lblInventoryItemName4.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName4.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName4.Location = new Point(21, 221);
+            lblInventoryItemName4.Location = new Point(0, 0);
             lblInventoryItemName4.Name = "lblInventoryItemName4";
-            lblInventoryItemName4.Size = new Size(131, 21);
-            lblInventoryItemName4.TabIndex = 37;
-            lblInventoryItemName4.Text = "Inventory Name";
-            lblInventoryItemName4.Visible = false;
+            lblInventoryItemName4.Size = new Size(100, 23);
+            lblInventoryItemName4.TabIndex = 172;
             // 
             // btnEditInventory5
             // 
-            btnEditInventory5.AutoSize = true;
-            btnEditInventory5.Location = new Point(935, 252);
+            btnEditInventory5.Location = new Point(0, 0);
             btnEditInventory5.Name = "btnEditInventory5";
-            btnEditInventory5.Size = new Size(75, 25);
-            btnEditInventory5.TabIndex = 54;
-            btnEditInventory5.Text = "Edit";
-            btnEditInventory5.UseVisualStyleBackColor = true;
-            btnEditInventory5.Visible = false;
+            btnEditInventory5.Size = new Size(75, 23);
+            btnEditInventory5.TabIndex = 155;
             // 
             // btnIncrease5
             // 
-            btnIncrease5.Location = new Point(893, 253);
+            btnIncrease5.Location = new Point(0, 0);
             btnIncrease5.Name = "btnIncrease5";
-            btnIncrease5.Size = new Size(31, 21);
-            btnIncrease5.TabIndex = 53;
-            btnIncrease5.Text = ">";
-            btnIncrease5.UseVisualStyleBackColor = true;
-            btnIncrease5.Visible = false;
-            btnIncrease5.Click += Quantity5IncreaseEventHandler;
+            btnIncrease5.Size = new Size(75, 23);
+            btnIncrease5.TabIndex = 156;
             // 
             // btnDecrease5
             // 
-            btnDecrease5.Location = new Point(818, 252);
+            btnDecrease5.Location = new Point(0, 0);
             btnDecrease5.Name = "btnDecrease5";
-            btnDecrease5.Size = new Size(31, 21);
-            btnDecrease5.TabIndex = 52;
-            btnDecrease5.Text = "<";
-            btnDecrease5.UseVisualStyleBackColor = true;
-            btnDecrease5.Visible = false;
+            btnDecrease5.Size = new Size(75, 23);
+            btnDecrease5.TabIndex = 157;
             // 
             // lblQuantity5
             // 
-            lblQuantity5.AutoSize = true;
-            lblQuantity5.BackColor = Color.WhiteSmoke;
-            lblQuantity5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity5.Location = new Point(855, 252);
+            lblQuantity5.Location = new Point(0, 0);
             lblQuantity5.Name = "lblQuantity5";
-            lblQuantity5.Size = new Size(32, 21);
-            lblQuantity5.TabIndex = 51;
-            lblQuantity5.Text = "Qty";
-            lblQuantity5.Visible = false;
+            lblQuantity5.Size = new Size(100, 23);
+            lblQuantity5.TabIndex = 158;
             // 
             // lblCost5
             // 
-            lblCost5.AutoSize = true;
-            lblCost5.BackColor = Color.WhiteSmoke;
-            lblCost5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost5.Location = new Point(737, 252);
+            lblCost5.Location = new Point(0, 0);
             lblCost5.Name = "lblCost5";
-            lblCost5.Size = new Size(39, 21);
-            lblCost5.TabIndex = 50;
-            lblCost5.Text = "Cost";
-            lblCost5.Visible = false;
-            lblCost5.Click += Quantity5DecreaseEventHandler;
+            lblCost5.Size = new Size(100, 23);
+            lblCost5.TabIndex = 159;
             // 
             // lblMaterial5
             // 
-            lblMaterial5.AutoSize = true;
-            lblMaterial5.BackColor = Color.WhiteSmoke;
-            lblMaterial5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial5.Location = new Point(560, 252);
+            lblMaterial5.Location = new Point(0, 0);
             lblMaterial5.Name = "lblMaterial5";
-            lblMaterial5.Size = new Size(67, 21);
-            lblMaterial5.TabIndex = 49;
-            lblMaterial5.Text = "Material";
-            lblMaterial5.Visible = false;
+            lblMaterial5.Size = new Size(100, 23);
+            lblMaterial5.TabIndex = 160;
             // 
             // lblUnitSize5
             // 
-            lblUnitSize5.AutoSize = true;
-            lblUnitSize5.BackColor = Color.WhiteSmoke;
-            lblUnitSize5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize5.Location = new Point(423, 252);
+            lblUnitSize5.Location = new Point(0, 0);
             lblUnitSize5.Name = "lblUnitSize5";
-            lblUnitSize5.Size = new Size(70, 21);
-            lblUnitSize5.TabIndex = 48;
-            lblUnitSize5.Text = "Unit Size";
-            lblUnitSize5.Visible = false;
+            lblUnitSize5.Size = new Size(100, 23);
+            lblUnitSize5.TabIndex = 161;
             // 
             // lblInventoryItemDescription5
             // 
-            lblInventoryItemDescription5.AutoSize = true;
-            lblInventoryItemDescription5.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription5.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription5.Location = new Point(197, 252);
+            lblInventoryItemDescription5.Location = new Point(0, 0);
             lblInventoryItemDescription5.Name = "lblInventoryItemDescription5";
-            lblInventoryItemDescription5.Size = new Size(152, 21);
-            lblInventoryItemDescription5.TabIndex = 47;
-            lblInventoryItemDescription5.Text = "Inventory Description";
-            lblInventoryItemDescription5.Visible = false;
+            lblInventoryItemDescription5.Size = new Size(100, 23);
+            lblInventoryItemDescription5.TabIndex = 162;
             // 
             // lblInventoryItemName5
             // 
-            lblInventoryItemName5.AutoSize = true;
-            lblInventoryItemName5.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName5.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName5.Location = new Point(21, 252);
+            lblInventoryItemName5.Location = new Point(0, 0);
             lblInventoryItemName5.Name = "lblInventoryItemName5";
-            lblInventoryItemName5.Size = new Size(131, 21);
-            lblInventoryItemName5.TabIndex = 46;
-            lblInventoryItemName5.Text = "Inventory Name";
-            lblInventoryItemName5.Visible = false;
+            lblInventoryItemName5.Size = new Size(100, 23);
+            lblInventoryItemName5.TabIndex = 163;
             // 
             // btnAddItem
             // 
-            btnAddItem.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddItem.Location = new Point(414, 470);
+            btnAddItem.Location = new Point(0, 0);
             btnAddItem.Name = "btnAddItem";
-            btnAddItem.Size = new Size(97, 34);
-            btnAddItem.TabIndex = 55;
-            btnAddItem.Text = "Add Item";
-            btnAddItem.UseVisualStyleBackColor = true;
-            btnAddItem.Click += AddItemEventHandler;
-            // 
-            // btnEditInventory10
-            // 
-            btnEditInventory10.AutoSize = true;
-            btnEditInventory10.Location = new Point(935, 407);
-            btnEditInventory10.Name = "btnEditInventory10";
-            btnEditInventory10.Size = new Size(75, 25);
-            btnEditInventory10.TabIndex = 101;
-            btnEditInventory10.Text = "Edit";
-            btnEditInventory10.UseVisualStyleBackColor = true;
-            btnEditInventory10.Visible = false;
-            // 
-            // btnIncrease10
-            // 
-            btnIncrease10.Location = new Point(893, 408);
-            btnIncrease10.Name = "btnIncrease10";
-            btnIncrease10.Size = new Size(31, 21);
-            btnIncrease10.TabIndex = 100;
-            btnIncrease10.Text = ">";
-            btnIncrease10.UseVisualStyleBackColor = true;
-            btnIncrease10.Visible = false;
-            btnIncrease10.Click += Quantity10IncreaseEventHandler;
-            // 
-            // btnDecrease10
-            // 
-            btnDecrease10.Location = new Point(818, 407);
-            btnDecrease10.Name = "btnDecrease10";
-            btnDecrease10.Size = new Size(31, 21);
-            btnDecrease10.TabIndex = 99;
-            btnDecrease10.Text = "<";
-            btnDecrease10.UseVisualStyleBackColor = true;
-            btnDecrease10.Visible = false;
-            btnDecrease10.Click += Quantity10DecreaseEventHandler;
+            btnAddItem.Size = new Size(75, 23);
+            btnAddItem.TabIndex = 154;
             // 
             // lblQuantity10
             // 
-            lblQuantity10.AutoSize = true;
-            lblQuantity10.BackColor = Color.WhiteSmoke;
-            lblQuantity10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity10.Location = new Point(855, 407);
+            lblQuantity10.Location = new Point(0, 0);
             lblQuantity10.Name = "lblQuantity10";
-            lblQuantity10.Size = new Size(32, 21);
-            lblQuantity10.TabIndex = 98;
-            lblQuantity10.Text = "Qty";
-            lblQuantity10.Visible = false;
+            lblQuantity10.Size = new Size(100, 23);
+            lblQuantity10.TabIndex = 112;
             // 
             // lblCost10
             // 
-            lblCost10.AutoSize = true;
-            lblCost10.BackColor = Color.WhiteSmoke;
-            lblCost10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost10.Location = new Point(737, 407);
+            lblCost10.Location = new Point(0, 0);
             lblCost10.Name = "lblCost10";
-            lblCost10.Size = new Size(39, 21);
-            lblCost10.TabIndex = 97;
-            lblCost10.Text = "Cost";
-            lblCost10.Visible = false;
+            lblCost10.Size = new Size(100, 23);
+            lblCost10.TabIndex = 113;
             // 
             // lblMaterial10
             // 
-            lblMaterial10.AutoSize = true;
-            lblMaterial10.BackColor = Color.WhiteSmoke;
-            lblMaterial10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial10.Location = new Point(560, 407);
+            lblMaterial10.Location = new Point(0, 0);
             lblMaterial10.Name = "lblMaterial10";
-            lblMaterial10.Size = new Size(67, 21);
-            lblMaterial10.TabIndex = 96;
-            lblMaterial10.Text = "Material";
-            lblMaterial10.Visible = false;
+            lblMaterial10.Size = new Size(100, 23);
+            lblMaterial10.TabIndex = 114;
             // 
             // lblUnitSize10
             // 
-            lblUnitSize10.AutoSize = true;
-            lblUnitSize10.BackColor = Color.WhiteSmoke;
-            lblUnitSize10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize10.Location = new Point(423, 407);
+            lblUnitSize10.Location = new Point(0, 0);
             lblUnitSize10.Name = "lblUnitSize10";
-            lblUnitSize10.Size = new Size(70, 21);
-            lblUnitSize10.TabIndex = 95;
-            lblUnitSize10.Text = "Unit Size";
-            lblUnitSize10.Visible = false;
+            lblUnitSize10.Size = new Size(100, 23);
+            lblUnitSize10.TabIndex = 115;
             // 
             // lblInventoryItemDescription10
             // 
-            lblInventoryItemDescription10.AutoSize = true;
-            lblInventoryItemDescription10.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription10.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription10.Location = new Point(197, 407);
+            lblInventoryItemDescription10.Location = new Point(0, 0);
             lblInventoryItemDescription10.Name = "lblInventoryItemDescription10";
-            lblInventoryItemDescription10.Size = new Size(152, 21);
-            lblInventoryItemDescription10.TabIndex = 94;
-            lblInventoryItemDescription10.Text = "Inventory Description";
-            lblInventoryItemDescription10.Visible = false;
+            lblInventoryItemDescription10.Size = new Size(100, 23);
+            lblInventoryItemDescription10.TabIndex = 116;
             // 
             // lblInventoryItemName10
             // 
-            lblInventoryItemName10.AutoSize = true;
-            lblInventoryItemName10.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName10.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName10.Location = new Point(21, 407);
+            lblInventoryItemName10.Location = new Point(0, 0);
             lblInventoryItemName10.Name = "lblInventoryItemName10";
-            lblInventoryItemName10.Size = new Size(131, 21);
-            lblInventoryItemName10.TabIndex = 93;
-            lblInventoryItemName10.Text = "Inventory Name";
-            lblInventoryItemName10.Visible = false;
+            lblInventoryItemName10.Size = new Size(100, 23);
+            lblInventoryItemName10.TabIndex = 117;
             // 
             // btnEditInventory9
             // 
-            btnEditInventory9.AutoSize = true;
-            btnEditInventory9.Location = new Point(935, 376);
+            btnEditInventory9.Location = new Point(0, 0);
             btnEditInventory9.Name = "btnEditInventory9";
-            btnEditInventory9.Size = new Size(75, 25);
-            btnEditInventory9.TabIndex = 92;
-            btnEditInventory9.Text = "Edit";
-            btnEditInventory9.UseVisualStyleBackColor = true;
-            btnEditInventory9.Visible = false;
+            btnEditInventory9.Size = new Size(75, 23);
+            btnEditInventory9.TabIndex = 118;
             // 
             // btnIncrease9
             // 
-            btnIncrease9.Location = new Point(893, 377);
+            btnIncrease9.Location = new Point(0, 0);
             btnIncrease9.Name = "btnIncrease9";
-            btnIncrease9.Size = new Size(31, 21);
-            btnIncrease9.TabIndex = 91;
-            btnIncrease9.Text = ">";
-            btnIncrease9.UseVisualStyleBackColor = true;
-            btnIncrease9.Visible = false;
-            btnIncrease9.Click += Quantity9IncreaseEventHandler;
+            btnIncrease9.Size = new Size(75, 23);
+            btnIncrease9.TabIndex = 119;
             // 
             // btnDecrease9
             // 
-            btnDecrease9.Location = new Point(818, 376);
+            btnDecrease9.Location = new Point(0, 0);
             btnDecrease9.Name = "btnDecrease9";
-            btnDecrease9.Size = new Size(31, 21);
-            btnDecrease9.TabIndex = 90;
-            btnDecrease9.Text = "<";
-            btnDecrease9.UseVisualStyleBackColor = true;
-            btnDecrease9.Visible = false;
-            btnDecrease9.Click += Quantity9DecreaseEventHandler;
+            btnDecrease9.Size = new Size(75, 23);
+            btnDecrease9.TabIndex = 120;
             // 
             // lblQuantity9
             // 
-            lblQuantity9.AutoSize = true;
-            lblQuantity9.BackColor = Color.WhiteSmoke;
-            lblQuantity9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity9.Location = new Point(855, 376);
+            lblQuantity9.Location = new Point(0, 0);
             lblQuantity9.Name = "lblQuantity9";
-            lblQuantity9.Size = new Size(32, 21);
-            lblQuantity9.TabIndex = 89;
-            lblQuantity9.Text = "Qty";
-            lblQuantity9.Visible = false;
+            lblQuantity9.Size = new Size(100, 23);
+            lblQuantity9.TabIndex = 121;
             // 
             // lblCost9
             // 
-            lblCost9.AutoSize = true;
-            lblCost9.BackColor = Color.WhiteSmoke;
-            lblCost9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost9.Location = new Point(737, 376);
+            lblCost9.Location = new Point(0, 0);
             lblCost9.Name = "lblCost9";
-            lblCost9.Size = new Size(39, 21);
-            lblCost9.TabIndex = 88;
-            lblCost9.Text = "Cost";
-            lblCost9.Visible = false;
+            lblCost9.Size = new Size(100, 23);
+            lblCost9.TabIndex = 122;
             // 
             // lblMaterial9
             // 
-            lblMaterial9.AutoSize = true;
-            lblMaterial9.BackColor = Color.WhiteSmoke;
-            lblMaterial9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial9.Location = new Point(560, 376);
+            lblMaterial9.Location = new Point(0, 0);
             lblMaterial9.Name = "lblMaterial9";
-            lblMaterial9.Size = new Size(67, 21);
-            lblMaterial9.TabIndex = 87;
-            lblMaterial9.Text = "Material";
-            lblMaterial9.Visible = false;
+            lblMaterial9.Size = new Size(100, 23);
+            lblMaterial9.TabIndex = 123;
             // 
             // lblUnitSize9
             // 
-            lblUnitSize9.AutoSize = true;
-            lblUnitSize9.BackColor = Color.WhiteSmoke;
-            lblUnitSize9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize9.Location = new Point(423, 376);
+            lblUnitSize9.Location = new Point(0, 0);
             lblUnitSize9.Name = "lblUnitSize9";
-            lblUnitSize9.Size = new Size(70, 21);
-            lblUnitSize9.TabIndex = 86;
-            lblUnitSize9.Text = "Unit Size";
-            lblUnitSize9.Visible = false;
+            lblUnitSize9.Size = new Size(100, 23);
+            lblUnitSize9.TabIndex = 124;
             // 
             // lblInventoryItemDescription9
             // 
-            lblInventoryItemDescription9.AutoSize = true;
-            lblInventoryItemDescription9.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription9.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription9.Location = new Point(197, 376);
+            lblInventoryItemDescription9.Location = new Point(0, 0);
             lblInventoryItemDescription9.Name = "lblInventoryItemDescription9";
-            lblInventoryItemDescription9.Size = new Size(152, 21);
-            lblInventoryItemDescription9.TabIndex = 85;
-            lblInventoryItemDescription9.Text = "Inventory Description";
-            lblInventoryItemDescription9.Visible = false;
+            lblInventoryItemDescription9.Size = new Size(100, 23);
+            lblInventoryItemDescription9.TabIndex = 125;
             // 
             // lblInventoryItemName9
             // 
-            lblInventoryItemName9.AutoSize = true;
-            lblInventoryItemName9.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName9.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName9.Location = new Point(21, 376);
+            lblInventoryItemName9.Location = new Point(0, 0);
             lblInventoryItemName9.Name = "lblInventoryItemName9";
-            lblInventoryItemName9.Size = new Size(131, 21);
-            lblInventoryItemName9.TabIndex = 84;
-            lblInventoryItemName9.Text = "Inventory Name";
-            lblInventoryItemName9.Visible = false;
+            lblInventoryItemName9.Size = new Size(100, 23);
+            lblInventoryItemName9.TabIndex = 126;
             // 
             // btnEditInventory8
             // 
-            btnEditInventory8.AutoSize = true;
-            btnEditInventory8.Location = new Point(935, 346);
+            btnEditInventory8.Location = new Point(0, 0);
             btnEditInventory8.Name = "btnEditInventory8";
-            btnEditInventory8.Size = new Size(75, 25);
-            btnEditInventory8.TabIndex = 83;
-            btnEditInventory8.Text = "Edit";
-            btnEditInventory8.UseVisualStyleBackColor = true;
-            btnEditInventory8.Visible = false;
+            btnEditInventory8.Size = new Size(75, 23);
+            btnEditInventory8.TabIndex = 127;
             // 
             // btnIncrease8
             // 
-            btnIncrease8.Location = new Point(893, 347);
+            btnIncrease8.Location = new Point(0, 0);
             btnIncrease8.Name = "btnIncrease8";
-            btnIncrease8.Size = new Size(31, 21);
-            btnIncrease8.TabIndex = 82;
-            btnIncrease8.Text = ">";
-            btnIncrease8.UseVisualStyleBackColor = true;
-            btnIncrease8.Visible = false;
-            btnIncrease8.Click += Quantity8IncreaseEventHandler;
+            btnIncrease8.Size = new Size(75, 23);
+            btnIncrease8.TabIndex = 128;
             // 
             // btnDecrease8
             // 
-            btnDecrease8.Location = new Point(818, 346);
+            btnDecrease8.Location = new Point(0, 0);
             btnDecrease8.Name = "btnDecrease8";
-            btnDecrease8.Size = new Size(31, 21);
-            btnDecrease8.TabIndex = 81;
-            btnDecrease8.Text = "<";
-            btnDecrease8.UseVisualStyleBackColor = true;
-            btnDecrease8.Visible = false;
-            btnDecrease8.Click += Quantity8DecreaseEventHandler;
+            btnDecrease8.Size = new Size(75, 23);
+            btnDecrease8.TabIndex = 129;
             // 
             // lblQuantity8
             // 
-            lblQuantity8.AutoSize = true;
-            lblQuantity8.BackColor = Color.WhiteSmoke;
-            lblQuantity8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity8.Location = new Point(855, 346);
+            lblQuantity8.Location = new Point(0, 0);
             lblQuantity8.Name = "lblQuantity8";
-            lblQuantity8.Size = new Size(32, 21);
-            lblQuantity8.TabIndex = 80;
-            lblQuantity8.Text = "Qty";
-            lblQuantity8.Visible = false;
+            lblQuantity8.Size = new Size(100, 23);
+            lblQuantity8.TabIndex = 130;
             // 
             // lblCost8
             // 
-            lblCost8.AutoSize = true;
-            lblCost8.BackColor = Color.WhiteSmoke;
-            lblCost8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost8.Location = new Point(737, 346);
+            lblCost8.Location = new Point(0, 0);
             lblCost8.Name = "lblCost8";
-            lblCost8.Size = new Size(39, 21);
-            lblCost8.TabIndex = 79;
-            lblCost8.Text = "Cost";
-            lblCost8.Visible = false;
+            lblCost8.Size = new Size(100, 23);
+            lblCost8.TabIndex = 131;
             // 
             // lblMaterial8
             // 
-            lblMaterial8.AutoSize = true;
-            lblMaterial8.BackColor = Color.WhiteSmoke;
-            lblMaterial8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial8.Location = new Point(560, 346);
+            lblMaterial8.Location = new Point(0, 0);
             lblMaterial8.Name = "lblMaterial8";
-            lblMaterial8.Size = new Size(67, 21);
-            lblMaterial8.TabIndex = 78;
-            lblMaterial8.Text = "Material";
-            lblMaterial8.Visible = false;
+            lblMaterial8.Size = new Size(100, 23);
+            lblMaterial8.TabIndex = 132;
             // 
             // lblUnitSize8
             // 
-            lblUnitSize8.AutoSize = true;
-            lblUnitSize8.BackColor = Color.WhiteSmoke;
-            lblUnitSize8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize8.Location = new Point(423, 346);
+            lblUnitSize8.Location = new Point(0, 0);
             lblUnitSize8.Name = "lblUnitSize8";
-            lblUnitSize8.Size = new Size(70, 21);
-            lblUnitSize8.TabIndex = 77;
-            lblUnitSize8.Text = "Unit Size";
-            lblUnitSize8.Visible = false;
+            lblUnitSize8.Size = new Size(100, 23);
+            lblUnitSize8.TabIndex = 133;
             // 
             // lblInventoryItemDescription8
             // 
-            lblInventoryItemDescription8.AutoSize = true;
-            lblInventoryItemDescription8.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription8.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription8.Location = new Point(197, 346);
+            lblInventoryItemDescription8.Location = new Point(0, 0);
             lblInventoryItemDescription8.Name = "lblInventoryItemDescription8";
-            lblInventoryItemDescription8.Size = new Size(152, 21);
-            lblInventoryItemDescription8.TabIndex = 76;
-            lblInventoryItemDescription8.Text = "Inventory Description";
-            lblInventoryItemDescription8.Visible = false;
+            lblInventoryItemDescription8.Size = new Size(100, 23);
+            lblInventoryItemDescription8.TabIndex = 134;
             // 
             // lblInventoryItemName8
             // 
-            lblInventoryItemName8.AutoSize = true;
-            lblInventoryItemName8.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName8.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName8.Location = new Point(21, 346);
+            lblInventoryItemName8.Location = new Point(0, 0);
             lblInventoryItemName8.Name = "lblInventoryItemName8";
-            lblInventoryItemName8.Size = new Size(131, 21);
-            lblInventoryItemName8.TabIndex = 75;
-            lblInventoryItemName8.Text = "Inventory Name";
-            lblInventoryItemName8.Visible = false;
+            lblInventoryItemName8.Size = new Size(100, 23);
+            lblInventoryItemName8.TabIndex = 135;
             // 
             // btnEditInventory7
             // 
-            btnEditInventory7.AutoSize = true;
-            btnEditInventory7.Location = new Point(935, 315);
+            btnEditInventory7.Location = new Point(0, 0);
             btnEditInventory7.Name = "btnEditInventory7";
-            btnEditInventory7.Size = new Size(75, 25);
-            btnEditInventory7.TabIndex = 74;
-            btnEditInventory7.Text = "Edit";
-            btnEditInventory7.UseVisualStyleBackColor = true;
-            btnEditInventory7.Visible = false;
+            btnEditInventory7.Size = new Size(75, 23);
+            btnEditInventory7.TabIndex = 136;
             // 
             // btnIncrease7
             // 
-            btnIncrease7.Location = new Point(893, 316);
+            btnIncrease7.Location = new Point(0, 0);
             btnIncrease7.Name = "btnIncrease7";
-            btnIncrease7.Size = new Size(31, 21);
-            btnIncrease7.TabIndex = 73;
-            btnIncrease7.Text = ">";
-            btnIncrease7.UseVisualStyleBackColor = true;
-            btnIncrease7.Visible = false;
-            btnIncrease7.Click += Quantity7IncreaseEventHandler;
+            btnIncrease7.Size = new Size(75, 23);
+            btnIncrease7.TabIndex = 137;
             // 
             // btnDecrease7
             // 
-            btnDecrease7.Location = new Point(818, 315);
+            btnDecrease7.Location = new Point(0, 0);
             btnDecrease7.Name = "btnDecrease7";
-            btnDecrease7.Size = new Size(31, 21);
-            btnDecrease7.TabIndex = 72;
-            btnDecrease7.Text = "<";
-            btnDecrease7.UseVisualStyleBackColor = true;
-            btnDecrease7.Visible = false;
-            btnDecrease7.Click += Quantity7DecreaseEventHandler;
+            btnDecrease7.Size = new Size(75, 23);
+            btnDecrease7.TabIndex = 138;
             // 
             // lblQuantity7
             // 
-            lblQuantity7.AutoSize = true;
-            lblQuantity7.BackColor = Color.WhiteSmoke;
-            lblQuantity7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity7.Location = new Point(855, 315);
+            lblQuantity7.Location = new Point(0, 0);
             lblQuantity7.Name = "lblQuantity7";
-            lblQuantity7.Size = new Size(32, 21);
-            lblQuantity7.TabIndex = 71;
-            lblQuantity7.Text = "Qty";
-            lblQuantity7.Visible = false;
+            lblQuantity7.Size = new Size(100, 23);
+            lblQuantity7.TabIndex = 139;
             // 
             // lblCost7
             // 
-            lblCost7.AutoSize = true;
-            lblCost7.BackColor = Color.WhiteSmoke;
-            lblCost7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost7.Location = new Point(737, 315);
+            lblCost7.Location = new Point(0, 0);
             lblCost7.Name = "lblCost7";
-            lblCost7.Size = new Size(39, 21);
-            lblCost7.TabIndex = 70;
-            lblCost7.Text = "Cost";
-            lblCost7.Visible = false;
+            lblCost7.Size = new Size(100, 23);
+            lblCost7.TabIndex = 140;
             // 
             // lblMaterial7
             // 
-            lblMaterial7.AutoSize = true;
-            lblMaterial7.BackColor = Color.WhiteSmoke;
-            lblMaterial7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial7.Location = new Point(560, 315);
+            lblMaterial7.Location = new Point(0, 0);
             lblMaterial7.Name = "lblMaterial7";
-            lblMaterial7.Size = new Size(67, 21);
-            lblMaterial7.TabIndex = 69;
-            lblMaterial7.Text = "Material";
-            lblMaterial7.Visible = false;
+            lblMaterial7.Size = new Size(100, 23);
+            lblMaterial7.TabIndex = 141;
             // 
             // lblUnitSize7
             // 
-            lblUnitSize7.AutoSize = true;
-            lblUnitSize7.BackColor = Color.WhiteSmoke;
-            lblUnitSize7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize7.Location = new Point(423, 315);
+            lblUnitSize7.Location = new Point(0, 0);
             lblUnitSize7.Name = "lblUnitSize7";
-            lblUnitSize7.Size = new Size(70, 21);
-            lblUnitSize7.TabIndex = 68;
-            lblUnitSize7.Text = "Unit Size";
-            lblUnitSize7.Visible = false;
+            lblUnitSize7.Size = new Size(100, 23);
+            lblUnitSize7.TabIndex = 142;
             // 
             // lblInventoryItemDescription7
             // 
-            lblInventoryItemDescription7.AutoSize = true;
-            lblInventoryItemDescription7.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription7.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription7.Location = new Point(197, 315);
+            lblInventoryItemDescription7.Location = new Point(0, 0);
             lblInventoryItemDescription7.Name = "lblInventoryItemDescription7";
-            lblInventoryItemDescription7.Size = new Size(152, 21);
-            lblInventoryItemDescription7.TabIndex = 67;
-            lblInventoryItemDescription7.Text = "Inventory Description";
-            lblInventoryItemDescription7.Visible = false;
+            lblInventoryItemDescription7.Size = new Size(100, 23);
+            lblInventoryItemDescription7.TabIndex = 143;
             // 
             // lblInventoryItemName7
             // 
-            lblInventoryItemName7.AutoSize = true;
-            lblInventoryItemName7.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName7.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName7.Location = new Point(21, 315);
+            lblInventoryItemName7.Location = new Point(0, 0);
             lblInventoryItemName7.Name = "lblInventoryItemName7";
-            lblInventoryItemName7.Size = new Size(131, 21);
-            lblInventoryItemName7.TabIndex = 66;
-            lblInventoryItemName7.Text = "Inventory Name";
-            lblInventoryItemName7.Visible = false;
+            lblInventoryItemName7.Size = new Size(100, 23);
+            lblInventoryItemName7.TabIndex = 144;
             // 
             // btnEditInventory6
             // 
-            btnEditInventory6.AutoSize = true;
-            btnEditInventory6.Location = new Point(935, 284);
+            btnEditInventory6.Location = new Point(0, 0);
             btnEditInventory6.Name = "btnEditInventory6";
-            btnEditInventory6.Size = new Size(75, 25);
-            btnEditInventory6.TabIndex = 65;
-            btnEditInventory6.Text = "Edit";
-            btnEditInventory6.UseVisualStyleBackColor = true;
-            btnEditInventory6.Visible = false;
+            btnEditInventory6.Size = new Size(75, 23);
+            btnEditInventory6.TabIndex = 145;
             // 
             // btnIncrease6
             // 
-            btnIncrease6.Location = new Point(893, 285);
+            btnIncrease6.Location = new Point(0, 0);
             btnIncrease6.Name = "btnIncrease6";
-            btnIncrease6.Size = new Size(31, 21);
-            btnIncrease6.TabIndex = 64;
-            btnIncrease6.Text = ">";
-            btnIncrease6.UseVisualStyleBackColor = true;
-            btnIncrease6.Visible = false;
-            btnIncrease6.Click += Quantity6IncreaseEventHandler;
+            btnIncrease6.Size = new Size(75, 23);
+            btnIncrease6.TabIndex = 146;
             // 
             // btnDecrease6
             // 
-            btnDecrease6.Location = new Point(818, 284);
+            btnDecrease6.Location = new Point(0, 0);
             btnDecrease6.Name = "btnDecrease6";
-            btnDecrease6.Size = new Size(31, 21);
-            btnDecrease6.TabIndex = 63;
-            btnDecrease6.Text = "<";
-            btnDecrease6.UseVisualStyleBackColor = true;
-            btnDecrease6.Visible = false;
+            btnDecrease6.Size = new Size(75, 23);
+            btnDecrease6.TabIndex = 147;
             // 
             // lblQuantity6
             // 
-            lblQuantity6.AutoSize = true;
-            lblQuantity6.BackColor = Color.WhiteSmoke;
-            lblQuantity6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblQuantity6.Location = new Point(855, 284);
+            lblQuantity6.Location = new Point(0, 0);
             lblQuantity6.Name = "lblQuantity6";
-            lblQuantity6.Size = new Size(32, 21);
-            lblQuantity6.TabIndex = 62;
-            lblQuantity6.Text = "Qty";
-            lblQuantity6.Visible = false;
+            lblQuantity6.Size = new Size(100, 23);
+            lblQuantity6.TabIndex = 148;
             // 
             // lblCost6
             // 
-            lblCost6.AutoSize = true;
-            lblCost6.BackColor = Color.WhiteSmoke;
-            lblCost6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblCost6.Location = new Point(737, 284);
+            lblCost6.Location = new Point(0, 0);
             lblCost6.Name = "lblCost6";
-            lblCost6.Size = new Size(39, 21);
-            lblCost6.TabIndex = 61;
-            lblCost6.Text = "Cost";
-            lblCost6.Visible = false;
-            lblCost6.Click += Quantity6DecreaseEventhandler;
+            lblCost6.Size = new Size(100, 23);
+            lblCost6.TabIndex = 149;
             // 
             // lblMaterial6
             // 
-            lblMaterial6.AutoSize = true;
-            lblMaterial6.BackColor = Color.WhiteSmoke;
-            lblMaterial6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblMaterial6.Location = new Point(560, 284);
+            lblMaterial6.Location = new Point(0, 0);
             lblMaterial6.Name = "lblMaterial6";
-            lblMaterial6.Size = new Size(67, 21);
-            lblMaterial6.TabIndex = 60;
-            lblMaterial6.Text = "Material";
-            lblMaterial6.Visible = false;
+            lblMaterial6.Size = new Size(100, 23);
+            lblMaterial6.TabIndex = 150;
             // 
             // lblUnitSize6
             // 
-            lblUnitSize6.AutoSize = true;
-            lblUnitSize6.BackColor = Color.WhiteSmoke;
-            lblUnitSize6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblUnitSize6.Location = new Point(423, 284);
+            lblUnitSize6.Location = new Point(0, 0);
             lblUnitSize6.Name = "lblUnitSize6";
-            lblUnitSize6.Size = new Size(70, 21);
-            lblUnitSize6.TabIndex = 59;
-            lblUnitSize6.Text = "Unit Size";
-            lblUnitSize6.Visible = false;
+            lblUnitSize6.Size = new Size(100, 23);
+            lblUnitSize6.TabIndex = 151;
             // 
             // lblInventoryItemDescription6
             // 
-            lblInventoryItemDescription6.AutoSize = true;
-            lblInventoryItemDescription6.BackColor = Color.WhiteSmoke;
-            lblInventoryItemDescription6.Font = new Font("Franklin Gothic Medium", 12F);
-            lblInventoryItemDescription6.Location = new Point(197, 284);
+            lblInventoryItemDescription6.Location = new Point(0, 0);
             lblInventoryItemDescription6.Name = "lblInventoryItemDescription6";
-            lblInventoryItemDescription6.Size = new Size(152, 21);
-            lblInventoryItemDescription6.TabIndex = 58;
-            lblInventoryItemDescription6.Text = "Inventory Description";
-            lblInventoryItemDescription6.Visible = false;
+            lblInventoryItemDescription6.Size = new Size(100, 23);
+            lblInventoryItemDescription6.TabIndex = 152;
             // 
             // lblInventoryItemName6
             // 
-            lblInventoryItemName6.AutoSize = true;
-            lblInventoryItemName6.BackColor = Color.WhiteSmoke;
-            lblInventoryItemName6.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblInventoryItemName6.Location = new Point(21, 284);
+            lblInventoryItemName6.Location = new Point(0, 0);
             lblInventoryItemName6.Name = "lblInventoryItemName6";
-            lblInventoryItemName6.Size = new Size(131, 21);
-            lblInventoryItemName6.TabIndex = 57;
-            lblInventoryItemName6.Text = "Inventory Name";
-            lblInventoryItemName6.Visible = false;
+            lblInventoryItemName6.Size = new Size(100, 23);
+            lblInventoryItemName6.TabIndex = 153;
             // 
             // btnRefresh
             // 
@@ -1328,15 +811,51 @@ namespace Milestone_Inventory
             btnRefresh.UseVisualStyleBackColor = false;
             btnRefresh.Click += RefreshViewClickEventHandler;
             // 
-            // lbl1
+            // lblInventoryDisplay
             // 
-            lbl1.AutoSize = true;
-            lbl1.Location = new Point(577, 470);
-            lbl1.Name = "lbl1";
-            lbl1.Size = new Size(38, 15);
-            lbl1.TabIndex = 103;
-            lbl1.Text = "label1";
-            lbl1.Visible = false;
+            lblInventoryDisplay.AutoSize = true;
+            lblInventoryDisplay.Font = new Font("Consolas", 10F);
+            lblInventoryDisplay.Location = new Point(31, 153);
+            lblInventoryDisplay.Name = "lblInventoryDisplay";
+            lblInventoryDisplay.Size = new Size(120, 17);
+            lblInventoryDisplay.TabIndex = 104;
+            lblInventoryDisplay.Text = "Inventory List";
+            // 
+            // cmbIncreaseQty
+            // 
+            cmbIncreaseQty.FormattingEnabled = true;
+            cmbIncreaseQty.Location = new Point(642, 111);
+            cmbIncreaseQty.Name = "cmbIncreaseQty";
+            cmbIncreaseQty.Size = new Size(121, 23);
+            cmbIncreaseQty.TabIndex = 105;
+            cmbIncreaseQty.DropDownClosed += SelectItemToInc;
+            // 
+            // cmbDecreaseQty
+            // 
+            cmbDecreaseQty.FormattingEnabled = true;
+            cmbDecreaseQty.Location = new Point(781, 111);
+            cmbDecreaseQty.Name = "cmbDecreaseQty";
+            cmbDecreaseQty.Size = new Size(121, 23);
+            cmbDecreaseQty.TabIndex = 106;
+            cmbDecreaseQty.DropDownClosed += SelectItemToDec;
+            // 
+            // lblIncreaseQty
+            // 
+            lblIncreaseQty.AutoSize = true;
+            lblIncreaseQty.Location = new Point(642, 78);
+            lblIncreaseQty.Name = "lblIncreaseQty";
+            lblIncreaseQty.Size = new Size(99, 15);
+            lblIncreaseQty.TabIndex = 107;
+            lblIncreaseQty.Text = "Increase Quantity";
+            // 
+            // lblDecreaseQty
+            // 
+            lblDecreaseQty.AutoSize = true;
+            lblDecreaseQty.Location = new Point(781, 78);
+            lblDecreaseQty.Name = "lblDecreaseQty";
+            lblDecreaseQty.Size = new Size(103, 15);
+            lblDecreaseQty.TabIndex = 108;
+            lblDecreaseQty.Text = "Decrease Quantity";
             // 
             // FrmInventoryList
             // 
@@ -1345,11 +864,12 @@ namespace Milestone_Inventory
             AutoSize = true;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(1033, 516);
-            Controls.Add(lbl1);
+            Controls.Add(lblDecreaseQty);
+            Controls.Add(lblIncreaseQty);
+            Controls.Add(cmbDecreaseQty);
+            Controls.Add(cmbIncreaseQty);
+            Controls.Add(lblInventoryDisplay);
             Controls.Add(btnRefresh);
-            Controls.Add(btnEditInventory10);
-            Controls.Add(btnIncrease10);
-            Controls.Add(btnDecrease10);
             Controls.Add(lblQuantity10);
             Controls.Add(lblCost10);
             Controls.Add(lblMaterial10);
@@ -1438,12 +958,6 @@ namespace Milestone_Inventory
             Controls.Add(lblUnitSize1);
             Controls.Add(lblInventoryItemDescription1);
             Controls.Add(lblInventoryItemName1);
-            Controls.Add(lblQuantity);
-            Controls.Add(lblCost);
-            Controls.Add(lblMaterial);
-            Controls.Add(lblUnitSize);
-            Controls.Add(lblInventoryItemDescription);
-            Controls.Add(lblInventoryItemName);
             Controls.Add(textBox1);
             Controls.Add(lblListHeader);
             Controls.Add(btnSearch);
@@ -1462,10 +976,7 @@ namespace Milestone_Inventory
         private Button btnSearch;
         private FileSystemWatcher fileSystemWatcher1;
         private Label lblListHeader;
-        private Label lblInventoryItemName;
         private TextBox textBox1;
-        private Label lblInventoryItemDescription;
-        private Label lblUnitSize;
         private Button btnDecrease1;
         private Label lblQuantity1;
         private Label lblCost1;
@@ -1473,9 +984,6 @@ namespace Milestone_Inventory
         private Label lblUnitSize1;
         private Label lblInventoryItemDescription1;
         private Label lblInventoryItemName1;
-        private Label lblQuantity;
-        private Label lblCost;
-        private Label lblMaterial;
         private Button btnIncrease1;
         private Button btnEditInventory1;
         private Button btnEditInventory2;
@@ -1515,9 +1023,6 @@ namespace Milestone_Inventory
         private Label lblInventoryItemDescription3;
         private Label lblInventoryItemName3;
         private Button btnAddItem;
-        private Button btnEditInventory10;
-        private Button btnIncrease10;
-        private Button btnDecrease10;
         private Label lblQuantity10;
         private Label lblCost10;
         private Label lblMaterial10;
@@ -1561,6 +1066,10 @@ namespace Milestone_Inventory
         private Label lblInventoryItemDescription6;
         private Label lblInventoryItemName6;
         private Button btnRefresh;
-        private Label lbl1;
+        private Label lblInventoryDisplay;
+        private ComboBox cmbDecreaseQty;
+        private ComboBox cmbIncreaseQty;
+        private Label lblDecreaseQty;
+        private Label lblIncreaseQty;
     }
 }

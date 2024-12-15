@@ -50,15 +50,11 @@ namespace Milestone_Inventory
             try
             {
                 StreamWriter outputFile;
-                //Write to InventoryList.txt copying filepath that was created with btnCreateInventory in FrmWelcome
+                
                 outputFile = File.AppendText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
-                //Each item must be on a new line so that lines[] array will put a single element in label 
-                outputFile.WriteLine(name);
-                outputFile.WriteLine(description);
-                outputFile.WriteLine(unitSize);
-                outputFile.WriteLine(material);
-                outputFile.WriteLine(cost);
-                outputFile.WriteLine(quantity);
+                 
+                outputFile.WriteLine(name + "," + description + "," + unitSize + ", " + material
+                    + ", " + "$" + cost + ", " + quantity);
                 outputFile.Close();
 
                 //Confirm Item added to Inventory
