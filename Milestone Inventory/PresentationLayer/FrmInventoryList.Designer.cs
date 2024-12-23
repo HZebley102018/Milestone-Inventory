@@ -134,7 +134,10 @@ namespace Milestone_Inventory
             cmbDecreaseQty = new ComboBox();
             lblIncreaseQty = new Label();
             lblDecreaseQty = new Label();
+            btnAddNewItem = new Button();
+            gvInventoryList = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)gvInventoryList).BeginInit();
             SuspendLayout();
             // 
             // btnSort
@@ -857,6 +860,29 @@ namespace Milestone_Inventory
             lblDecreaseQty.TabIndex = 108;
             lblDecreaseQty.Text = "Decrease Quantity";
             // 
+            // btnAddNewItem
+            // 
+            btnAddNewItem.AutoSize = true;
+            btnAddNewItem.BackColor = Color.DodgerBlue;
+            btnAddNewItem.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnAddNewItem.Location = new Point(452, 481);
+            btnAddNewItem.Name = "btnAddNewItem";
+            btnAddNewItem.Size = new Size(107, 27);
+            btnAddNewItem.TabIndex = 200;
+            btnAddNewItem.Text = "Add New Item";
+            btnAddNewItem.UseVisualStyleBackColor = false;
+            btnAddNewItem.Click += AddINewItemEventHandler;
+            // 
+            // gvInventoryList
+            // 
+            gvInventoryList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            gvInventoryList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            gvInventoryList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            gvInventoryList.Location = new Point(33, 175);
+            gvInventoryList.Name = "gvInventoryList";
+            gvInventoryList.Size = new Size(772, 279);
+            gvInventoryList.TabIndex = 201;
+            // 
             // FrmInventoryList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -864,6 +890,8 @@ namespace Milestone_Inventory
             AutoSize = true;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(1033, 516);
+            Controls.Add(gvInventoryList);
+            Controls.Add(btnAddNewItem);
             Controls.Add(lblDecreaseQty);
             Controls.Add(lblIncreaseQty);
             Controls.Add(cmbDecreaseQty);
@@ -966,6 +994,7 @@ namespace Milestone_Inventory
             Text = "Inventory List";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)gvInventoryList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -1071,5 +1100,8 @@ namespace Milestone_Inventory
         private ComboBox cmbIncreaseQty;
         private Label lblDecreaseQty;
         private Label lblIncreaseQty;
+        private Button btnAddNewItem;
+        private DataGridView gvInventoryList;
+        // private DataGridView gvInventory;
     }
 }

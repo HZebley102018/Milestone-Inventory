@@ -49,6 +49,8 @@ namespace Milestone_Inventory
             btnSubmitAddItem = new Button();
             txtAddQuantity = new TextBox();
             lbladdQuantity = new Label();
+            grbAtrributes = new GroupBox();
+            grbAtrributes.SuspendLayout();
             SuspendLayout();
             // 
             // lblAddItemTitle
@@ -66,7 +68,7 @@ namespace Milestone_Inventory
             lblAddName.AutoSize = true;
             lblAddName.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAddName.ImageAlign = ContentAlignment.MiddleRight;
-            lblAddName.Location = new Point(150, 88);
+            lblAddName.Location = new Point(75, 35);
             lblAddName.Name = "lblAddName";
             lblAddName.Size = new Size(55, 21);
             lblAddName.TabIndex = 1;
@@ -75,19 +77,19 @@ namespace Milestone_Inventory
             // txtAddName
             // 
             txtAddName.BackColor = Color.WhiteSmoke;
-            txtAddName.Location = new Point(222, 83);
+            txtAddName.Location = new Point(147, 30);
             txtAddName.MaxLength = 20;
             txtAddName.Name = "txtAddName";
-            txtAddName.Size = new Size(422, 26);
+            txtAddName.Size = new Size(198, 26);
             txtAddName.TabIndex = 2;
             // 
             // txtAddDescription
             // 
             txtAddDescription.BackColor = Color.WhiteSmoke;
-            txtAddDescription.Location = new Point(222, 135);
+            txtAddDescription.Location = new Point(147, 82);
             txtAddDescription.MaxLength = 20;
             txtAddDescription.Name = "txtAddDescription";
-            txtAddDescription.Size = new Size(422, 26);
+            txtAddDescription.Size = new Size(198, 26);
             txtAddDescription.TabIndex = 4;
             // 
             // lblAddDescription
@@ -95,7 +97,7 @@ namespace Milestone_Inventory
             lblAddDescription.AutoSize = true;
             lblAddDescription.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAddDescription.ImageAlign = ContentAlignment.MiddleRight;
-            lblAddDescription.Location = new Point(108, 138);
+            lblAddDescription.Location = new Point(33, 85);
             lblAddDescription.Name = "lblAddDescription";
             lblAddDescription.Size = new Size(97, 21);
             lblAddDescription.TabIndex = 3;
@@ -104,10 +106,10 @@ namespace Milestone_Inventory
             // txtAddUnitSize
             // 
             txtAddUnitSize.BackColor = Color.WhiteSmoke;
-            txtAddUnitSize.Location = new Point(222, 190);
+            txtAddUnitSize.Location = new Point(147, 137);
             txtAddUnitSize.MaxLength = 20;
             txtAddUnitSize.Name = "txtAddUnitSize";
-            txtAddUnitSize.Size = new Size(422, 26);
+            txtAddUnitSize.Size = new Size(198, 26);
             txtAddUnitSize.TabIndex = 6;
             // 
             // lblAddUnitSize
@@ -115,7 +117,7 @@ namespace Milestone_Inventory
             lblAddUnitSize.AutoSize = true;
             lblAddUnitSize.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAddUnitSize.ImageAlign = ContentAlignment.MiddleRight;
-            lblAddUnitSize.Location = new Point(126, 193);
+            lblAddUnitSize.Location = new Point(51, 140);
             lblAddUnitSize.Name = "lblAddUnitSize";
             lblAddUnitSize.Size = new Size(79, 21);
             lblAddUnitSize.TabIndex = 5;
@@ -124,10 +126,10 @@ namespace Milestone_Inventory
             // txtAddMaterial
             // 
             txtAddMaterial.BackColor = Color.WhiteSmoke;
-            txtAddMaterial.Location = new Point(222, 242);
+            txtAddMaterial.Location = new Point(147, 189);
             txtAddMaterial.MaxLength = 20;
             txtAddMaterial.Name = "txtAddMaterial";
-            txtAddMaterial.Size = new Size(422, 26);
+            txtAddMaterial.Size = new Size(198, 26);
             txtAddMaterial.TabIndex = 8;
             // 
             // lblAddMaterial
@@ -135,7 +137,7 @@ namespace Milestone_Inventory
             lblAddMaterial.AutoSize = true;
             lblAddMaterial.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAddMaterial.ImageAlign = ContentAlignment.MiddleRight;
-            lblAddMaterial.Location = new Point(130, 245);
+            lblAddMaterial.Location = new Point(55, 192);
             lblAddMaterial.Name = "lblAddMaterial";
             lblAddMaterial.Size = new Size(75, 21);
             lblAddMaterial.TabIndex = 7;
@@ -144,10 +146,10 @@ namespace Milestone_Inventory
             // txtAddCost
             // 
             txtAddCost.BackColor = Color.WhiteSmoke;
-            txtAddCost.Location = new Point(222, 293);
+            txtAddCost.Location = new Point(147, 240);
             txtAddCost.MaxLength = 20;
             txtAddCost.Name = "txtAddCost";
-            txtAddCost.Size = new Size(422, 26);
+            txtAddCost.Size = new Size(198, 26);
             txtAddCost.TabIndex = 10;
             // 
             // lblAddCost
@@ -155,7 +157,7 @@ namespace Milestone_Inventory
             lblAddCost.AutoSize = true;
             lblAddCost.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAddCost.ImageAlign = ContentAlignment.MiddleRight;
-            lblAddCost.Location = new Point(162, 296);
+            lblAddCost.Location = new Point(87, 243);
             lblAddCost.Name = "lblAddCost";
             lblAddCost.Size = new Size(43, 21);
             lblAddCost.TabIndex = 9;
@@ -176,10 +178,10 @@ namespace Milestone_Inventory
             // txtAddQuantity
             // 
             txtAddQuantity.BackColor = Color.WhiteSmoke;
-            txtAddQuantity.Location = new Point(222, 341);
+            txtAddQuantity.Location = new Point(147, 288);
             txtAddQuantity.MaxLength = 20;
             txtAddQuantity.Name = "txtAddQuantity";
-            txtAddQuantity.Size = new Size(422, 26);
+            txtAddQuantity.Size = new Size(198, 26);
             txtAddQuantity.TabIndex = 13;
             // 
             // lbladdQuantity
@@ -187,11 +189,32 @@ namespace Milestone_Inventory
             lbladdQuantity.AutoSize = true;
             lbladdQuantity.Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lbladdQuantity.ImageAlign = ContentAlignment.MiddleRight;
-            lbladdQuantity.Location = new Point(129, 341);
+            lbladdQuantity.Location = new Point(54, 288);
             lbladdQuantity.Name = "lbladdQuantity";
             lbladdQuantity.Size = new Size(76, 21);
             lbladdQuantity.TabIndex = 12;
             lbladdQuantity.Text = "Quantity";
+            // 
+            // grbAtrributes
+            // 
+            grbAtrributes.Controls.Add(txtAddUnitSize);
+            grbAtrributes.Controls.Add(txtAddQuantity);
+            grbAtrributes.Controls.Add(lblAddName);
+            grbAtrributes.Controls.Add(lbladdQuantity);
+            grbAtrributes.Controls.Add(txtAddName);
+            grbAtrributes.Controls.Add(lblAddDescription);
+            grbAtrributes.Controls.Add(txtAddCost);
+            grbAtrributes.Controls.Add(txtAddDescription);
+            grbAtrributes.Controls.Add(lblAddCost);
+            grbAtrributes.Controls.Add(lblAddUnitSize);
+            grbAtrributes.Controls.Add(txtAddMaterial);
+            grbAtrributes.Controls.Add(lblAddMaterial);
+            grbAtrributes.Location = new Point(210, 51);
+            grbAtrributes.Name = "grbAtrributes";
+            grbAtrributes.Size = new Size(374, 322);
+            grbAtrributes.TabIndex = 14;
+            grbAtrributes.TabStop = false;
+            grbAtrributes.Text = "Inventory Atrributes";
             // 
             // FrmAddItem
             // 
@@ -199,24 +222,15 @@ namespace Milestone_Inventory
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.LightBlue;
             ClientSize = new Size(1029, 630);
-            Controls.Add(txtAddQuantity);
-            Controls.Add(lbladdQuantity);
+            Controls.Add(grbAtrributes);
             Controls.Add(btnSubmitAddItem);
-            Controls.Add(txtAddCost);
-            Controls.Add(lblAddCost);
-            Controls.Add(txtAddMaterial);
-            Controls.Add(lblAddMaterial);
-            Controls.Add(txtAddUnitSize);
-            Controls.Add(lblAddUnitSize);
-            Controls.Add(txtAddDescription);
-            Controls.Add(lblAddDescription);
-            Controls.Add(txtAddName);
-            Controls.Add(lblAddName);
             Controls.Add(lblAddItemTitle);
             Font = new Font("Franklin Gothic Medium", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Margin = new Padding(4);
             Name = "FrmAddItem";
             Text = "FrmAddItem";
+            grbAtrributes.ResumeLayout(false);
+            grbAtrributes.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -237,5 +251,6 @@ namespace Milestone_Inventory
         private TextBox txtAddQuantity;
         private Label lbladdQuantity; 
         private Button btnSubmitAddItem;
+        private GroupBox grbAtrributes;
     }
 }

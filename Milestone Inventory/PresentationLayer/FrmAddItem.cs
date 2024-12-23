@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 //To use StreamWriter
 using System.IO;
+using Milestone_Inventory.BusinessLayer;
 /*
  * Harlee Zebley
  * CST-150
@@ -26,36 +27,23 @@ namespace Milestone_Inventory
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Add New Item to inventory from inventory class 
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void SubmitAddItemEventHandler(object sender, EventArgs e)
         {
-            //Declare and initialize variables
-            string name;
-            string description;
-            string unitSize;
-            string material;
-            string cost;
-            string quantity;
+            Inventory inventoryObject = new Inventory(txtAddName.Text, txtAddDescription.Text,
+                txtAddUnitSize.Text, txtAddMaterial.Text, txtAddCost.Text, int.Parse(txtAddQuantity.Text));
 
-            //cost is a string because we are not doing any mathematical expressions
-            //Assign values from user input
-            name = txtAddName.Text;
-            description = txtAddDescription.Text;   
-            unitSize = txtAddUnitSize.Text; 
-            material = txtAddMaterial.Text;
-            cost = txtAddCost.Text;
-            quantity = txtAddQuantity.Text;
-
-
-            //Append variables to text file using StreamWriter 
+            //Append to text file using StreamWriter 
             try
             {
                 StreamWriter outputFile;
-                
                 outputFile = File.AppendText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
-                 
-                outputFile.WriteLine(name + "," + description + "," + unitSize + ", " + material
-                    + ", " + "$" + cost + ", " + quantity);
-                outputFile.Close();
+
+                outputFile.WriteLine(inventoryObject.ToString());
 
                 //Confirm Item added to Inventory
                 MessageBox.Show("Item Added");
