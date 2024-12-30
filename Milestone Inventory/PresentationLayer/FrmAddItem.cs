@@ -10,6 +10,7 @@ using System.Windows.Forms;
 //To use StreamWriter
 using System.IO;
 using Milestone_Inventory.BusinessLayer;
+using Milestone_Inventory.Models;
 /*
  * Harlee Zebley
  * CST-150
@@ -22,6 +23,8 @@ namespace Milestone_Inventory
 {
     public partial class FrmAddItem : Form
     {
+        private Inventory inventory;
+        List<InvItem> invItems = new List<InvItem>();
         public FrmAddItem()
         {
             InitializeComponent();
@@ -34,41 +37,57 @@ namespace Milestone_Inventory
         /// <param name="e"></param>
         private void SubmitAddItemEventHandler(object sender, EventArgs e)
         {
-            Inventory inventoryObject = new Inventory(txtAddName.Text, txtAddDescription.Text,
-                txtAddUnitSize.Text, txtAddMaterial.Text, txtAddCost.Text, int.Parse(txtAddQuantity.Text));
-
-            //Append to text file using StreamWriter 
-            try
+            //Declare Variables
+            string name = txtAddName.Text;
+            string description = txtAddDescription.Text;
+            string unitSize = txtAddUnitSize.Text;
+            string material = txtAddMaterial.Text;
+            double cost = 0.0;
+            int quantity = 0;
+            //Exception checking for textbox entries
+            if (txtAddName.Text == null || txtAddDescription.Text == null ||
+                txtAddUnitSize.Text == null || txtAddMaterial.Text == null)
             {
-                StreamWriter outputFile;
-                outputFile = File.AppendText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
-
-                outputFile.WriteLine(inventoryObject.ToString());
-
-                //Confirm Item added to Inventory
-                MessageBox.Show("Item Added");
-
-                //Clear contents of form
-                txtAddName.Text = "";
-                txtAddDescription.Text = "";
-                txtAddUnitSize.Text = "";
-                txtAddMaterial.Text = "";
-                txtAddCost.Text = "";
-                txtAddQuantity.Text = "";
-
-                //Close StreamReader so that functions from FrmInventoryList can read text
-                outputFile.Close();
-
+                MessageBox.Show("Please fill out all items!");
             }
-            catch(Exception ex)
+            else
             {
-                //Display an error message
-                MessageBox.Show(ex.Message);
+                name = txtAddName.Text;
+                description = txtAddDescription.Text;
+                unitSize = txtAddUnitSize.Text;
+                material = txtAddMaterial.Text;
             }
+            if (double.TryParse(txtAddCost.Text, out double result))
+            {
+                cost = Convert.ToDouble(txtAddCost.Text);
+            }
+            else
+            {
+                MessageBox.Show("Please enter a price in dollars and cents.");
+            }
+            if (int.TryParse(txtAddQuantity.Text, out int result1))
+            {
+                quantity = Convert.ToInt32(txtAddQuantity.Text);
+            }
+            else
+            {
+                MessageBox.Show("Please enter a valid whole number quantity.");
+            }
+            //Instantiate Inventory Class
+            Inventory newItem = new Inventory();
+            //Pass parameters to Inventory Class method
+            invItems = newItem.AddNewItem(invItems, name, description, unitSize, material, cost, quantity);
 
+            //Clear contents of form
+            txtAddName.Text = "";
+            txtAddDescription.Text = "";
+            txtAddUnitSize.Text = "";
+            txtAddMaterial.Text = "";
+            txtAddCost.Text = "";
+            txtAddQuantity.Text = "";
 
-
-
+            //Close Form
+            this.Close();
         }
     }
 }

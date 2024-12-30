@@ -12,6 +12,8 @@ using static System.Windows.Forms.LinkLabel;
 using System.Net.Quic;
 using System.Data;
 using Milestone_Inventory.BusinessLayer;
+using Milestone_Inventory.Models;
+
 /*
  * Harlee Zebley
  * CST-150
@@ -27,46 +29,71 @@ namespace Milestone_Inventory
     public partial class FrmInventoryList : Form
     {
         //Declare and Initialize class variables
-        string[] inventory;
-        const int PadSpace = 28;
-        int qty = 0;
+        List<InvItem> invItems = new List<InvItem>();
+        private int SelectedGridIndex { get; set; }
+  
         public FrmInventoryList()
         {
             InitializeComponent();
-            cmbDecreaseQty.Visible = false;
-            cmbIncreaseQty.Visible = false;
-            lblIncreaseQty.Visible = false;
-            lblDecreaseQty.Visible = false;
-        }
-
-        //Instantiate new datatable to display text 
-        //Set columns and data source 
-        DataTable table = new DataTable();
-        public void Form1_Load(object sender, EventArgs e)
-        { 
-            table.Columns.Add("Inventory Item", typeof(string));
-            table.Columns.Add("Description", typeof(string));
-            table.Columns.Add("Unit Size", typeof(string));
-            table.Columns.Add("Material", typeof(string));
-            table.Columns.Add("Cost", typeof(string));
-            table.Columns.Add("Quantity", typeof(string));
-
-            gvInventoryList.DataSource = table;
         }
 
         /// <summary>
-        /// This button will populate the inventory when clicked
-        /// If more items are added, clicking this button will reread the text and the additional inventory
-        /// When Items are increased or decreased this will refresh the inventory list
+        /// Loads and formatsthe text into the DataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void RefreshViewClickEventHandler(object sender, EventArgs e)
+        public void Form1_Load(object sender, EventArgs e)
         {
-            //clear the DataGridView (or it will just add entire inventory again
-            table.Rows.Clear();
-            ReadText();
-            //Inventory newItem = new Inventory();
+            //Instantiate Inventory Class
+            Inventory readInv = new Inventory();
+            //Call to Inventory Class to read inventory
+            invItems = readInv.ReadInventory(invItems);
+            //clear the DataGridView
+            gvInventoryList.DataSource = null;
+            //Populate the DataGridView
+            gvInventoryList.DataSource = invItems;
+            //Format the DataGridView
+            foreach (DataGridViewColumn column in gvInventoryList.Columns)
+            {
+                switch (column.Index)
+                {
+                    case 0:
+                        column.HeaderText = "Item Name";
+                        break;
+                    case 1:
+                        column.HeaderText = "Description";
+                        break;
+                    case 2:
+                        column.HeaderText = "Unit Size";
+                        break;
+                    case 3:
+                        column.HeaderText = "Material";
+                        break;
+                    case 4:
+                        column.HeaderText = "Cost";
+                        column.DefaultCellStyle.Format = "C2";
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        break;
+                    case 5:
+                        column.HeaderText = "Quantity";
+                        column.DefaultCellStyle.Format = "N0";
+                        column.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
+                        break;
+                    default:
+                        MessageBox.Show("Invalid column was trying to be accessed.");
+                        break;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Manage Click Events of DataGridView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void GridView_ClickEventHandler(object sender, EventArgs e)
+        {
+            SelectedGridIndex = gvInventoryList.CurrentRow.Index;
         }
 
         /// <summary>
@@ -76,204 +103,76 @@ namespace Milestone_Inventory
         /// <param name="e"></param>
         private void AddINewItemEventHandler(object sender, EventArgs e)
         {
-            FrmAddItem f1 = new FrmAddItem();
-            f1.Show();
+            FrmAddItem FrmAddItem = new FrmAddItem();
+            FrmAddItem.Show();
         }
 
         /// <summary>
-        /// This method will populate the inventory list label
-        /// </summary>
-        public void ReadText()
-        {
-            //Declare and initializevariable for comboBox
-            //Must be integer for selection
-            int number = 1;
-            Inventory newItem = new Inventory();
-            //populate inventory array with lines from inventory List
-            string[] inventory = File.ReadAllLines(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
-            //Split the properties from each line of the inventory list into
-            //separate elements and to DataGridView 
-            foreach (string item in inventory)
-            {
-                string[] property = item.Split(", ");
-                //Display in datagridview table
-                table.Rows.Add(property);
-   
-                //Dynamically populate the comboBoxes to select items to increase and decrease
-                cmbIncreaseQty.Items.Add(number);
-                cmbDecreaseQty.Items.Add(number);
-
-                number++;
-            }
-            //Make increase and decrease labels and comboBoxes visible
-            //lblIncreaseQty.Visible = true;
-            //lblDecreaseQty.Visible = true;
-            //cmbIncreaseQty.Visible = true;
-            // cmbDecreaseQty.Visible = true;
-        }
-
-        /// <summary>
-        /// Select the item to increase from the comboBox
-        /// Get quantity from text from GetQty()
-        /// Display new quantity returned from IncDisplayQuantity()
+        /// Increase the Qty of the Selected Row from DataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SelectItemToInc(object sender, EventArgs e)
+        private void BtnIncQty_ClickEventHandler(object sender, EventArgs e)
         {
-            //Declare and initialize variables
-            int itemRowSelected = -1;
-            int qtyValue = -1;
-            //Select Row to increase
-            itemRowSelected = cmbIncreaseQty.SelectedIndex;
-            //must be >= 0 or firt row gets skipped
-            if (itemRowSelected >= 0)
-            {
-                qtyValue = GetQty(inventory, itemRowSelected);
-                IncDisplayQty(inventory, itemRowSelected, qtyValue);
-            }
-        }
-        /// <summary>
-        /// Get quantity to be used for selectItemToInc() and selectItemToDec()
-        /// </summary>
-        /// <param name="inventory"></param>
-        /// <param name="itemRowSelected"></param>
-        /// <returns></returns>
-        private int GetQty(string[] inventory, int itemRowSelected)
-        {
-            //-1 to catch errors
-            int qty = -1;
-            //iterate through inventory rows
-            for (int i = 0; i < inventory.Length; i++)
-            {
-                //when inventory row is the selectted index from comboBox, initiate 
-                //incrementation
-                if (i == itemRowSelected)
-                {
-                    //split the inventory row into property elements
-                    string[] property = inventory[i].Split(',');
-                    try
-                    {
-                        //get the 6th property (quantity) from the row 
-                        qty = int.Parse(property[5].Trim());
-                        //return quantity to selectItemToInc() or selectItemToDec()
-                        return qty;
-                    }
-                    catch (FormatException e)
-                    {
-                        MessageBox.Show(e.Message);
-                    }
-                }
-            }
-            //Return -1 for exceptions
-            return qty;
-        }
-        /// <summary>
-        /// Increment the returned qty from GetQty() and write over text file
-        /// for ReadText() to refresh the page with the updated qty
-        /// </summary>
-        /// <param name="property"></param>
-        /// <param name="itemRowSelected"></param>
-        /// <param name="qty"></param>
-        private void IncDisplayQty(string[] property, int itemRowSelected, int qty)
-        {
-            //Decalre and initialize variables to update the Row
-            string updateLine = "";
-
-            //increment qty by 1
-            qty++;
-
-            //split the row selected into elements to separate properties
-            property = inventory[itemRowSelected].Split(", ");
-            //update the sixth element (qty) to reflect the incremented qty
-            property[5] = qty.ToString();
-            //update the row to reflect the incremented qty
-            updateLine = property[0].Trim() + ", " + property[1].Trim() + ", " + property[2].Trim() +
-                ", " + property[3].Trim() + ", " + property[4].Trim() + ", " + property[5].Trim();
-            //update the inventory array with the new line of text 
-            inventory[itemRowSelected] = updateLine;
-
-            //overwrite the text for ReadText() to refresh the page with updated qty
-            StreamWriter outputFile;
-            outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
-            for (int i = 0; i < inventory.Length; i++)
-            {
-                outputFile.WriteLine(inventory[i]);
-            }
-            outputFile.Close();
-
+            //Instantiate the Inventory Class
+            Inventory incQty = new Inventory();
+            //Pass parameters Inventory Class method
+            invItems = incQty.IncQtyValue(invItems, SelectedGridIndex);
+            //Refresh the DataGridView with the returned invItems
+            gvInventoryList.Refresh();
         }
 
         /// <summary>
-        /// Decrement the returned qty from GetQty() and write over text file
-        /// for ReadText() to refresh the page with the updated qty
-        /// </summary>
-        /// <param name="property"></param>
-        /// <param name="itemRowSelected"></param>
-        /// <param name="qty"></param>
-        private void DecDisplayQty(string[] property, int itemRowSelected, int qty)
-        {
-            //Declare and initialize variables 
-            string updateLine = "";
-            //Only allow decrementation if greater than 0. No negative inventory.
-            if (qty > 0)
-            {
-                try
-                {
-                    //decrease selected item by 1
-                    qty--;
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-
-
-                //Separate inventory item into array with property elements
-                property = inventory[itemRowSelected].Split(", ");
-                //update the sixth element (qty) with decremented qty
-                property[5] = qty.ToString();
-                //Update the row text
-                updateLine = property[0].Trim() + ", " + property[1].Trim() + ", " + property[2].Trim() +
-                    ", " + property[3].Trim() + ", " + property[4].Trim() + ", " + property[5].Trim();
-                //update the inventory array with the new row text 
-                inventory[itemRowSelected] = updateLine;
-
-                //Overwrite the text file for ReadText() to pull the updated qty on refresh
-                StreamWriter outputFile;
-                outputFile = File.CreateText(@"C:\Users\HarleeSchool\source\repos\Milestone Inventory\Milestone Inventory\bin\Debug\net8.0-windows\Data\Inventory List.txt");
-                for (int i = 0; i < inventory.Length; i++)
-                {
-                    outputFile.WriteLine(inventory[i]);
-                }
-                outputFile.Close();
-            }
-        }
-        /// <summary>
-        /// Select the item to decrease from the comboBox
-        /// Get quantity from text from GetQty()
-        /// Display new quantity returned from DecDisplayQuantity()
+        /// Decrease the Qty of the Selected Row from DataGridView
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void SelectItemToDec(object sender, EventArgs e)
+        private void BtnDecQty_ClickEventHandler(object sender, EventArgs e)
         {
-            //Declare and initialize variables
-            //Set at -1 to catch errors
-            int itemRowSelected = -1;
-            int qtyValue = -1;
+            //Instantiat the Inventory Class
+            Inventory decQty = new Inventory();
+            //Pass parameters to Inventory Class method
+            invItems = decQty.DecQtyValue(invItems, SelectedGridIndex);
+            //Refresh the DataGridView with the returned invItems
+            gvInventoryList.Refresh();
+        }
 
-            //Select row to decrease
-            itemRowSelected = cmbDecreaseQty.SelectedIndex;
-            //when inventory row is the selectted index from comboBox, initiate 
-            //decrementation
-            if (itemRowSelected >= 0)
-            {
-                //Get qty from text from GetQty()
-                qtyValue = GetQty(inventory, itemRowSelected);
-                //Get and display new qty from DecDisplayQty()
-                DecDisplayQty(inventory, itemRowSelected, qtyValue);
-            }
+        /// <summary>
+        /// Delete Selected Row from DataGridView
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnDelete_ClickEventHandler(object sender, EventArgs e)
+        {
+            //Instantiate the Inventory Class
+            Inventory deleteItem = new Inventory();
+            //Pass parameters to Inventory Class method
+            invItems = deleteItem.DeleteInvItem(invItems, SelectedGridIndex);
+            //Clear the DataGridView
+            gvInventoryList.DataSource = null;
+            //Read the new text into invItems
+            gvInventoryList.DataSource = invItems;
+            //Refresh the DataGridView
+            gvInventoryList.Refresh();
+        }
+
+        /// <summary>
+        /// Refresh the DataGridView after adding item
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnRefresh_ClickEventHandler(object sender, EventArgs e)
+        {
+            //Instantiate Inventory Class
+            Inventory updatedInventory = new Inventory();
+            //Pass parameters to Inventory Class method
+            invItems = updatedInventory.ReadInventory(invItems);
+            //clear the DataGridView
+            gvInventoryList.DataSource = null;
+            //Get new invItems
+            gvInventoryList.DataSource = invItems;
+            //Refresh the DataGridView
+            gvInventoryList.Refresh();
         }
 
     }

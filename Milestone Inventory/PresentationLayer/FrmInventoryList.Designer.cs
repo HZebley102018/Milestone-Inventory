@@ -128,14 +128,12 @@ namespace Milestone_Inventory
             lblUnitSize6 = new Label();
             lblInventoryItemDescription6 = new Label();
             lblInventoryItemName6 = new Label();
-            btnRefresh = new Button();
-            lblInventoryDisplay = new Label();
-            cmbIncreaseQty = new ComboBox();
-            cmbDecreaseQty = new ComboBox();
-            lblIncreaseQty = new Label();
-            lblDecreaseQty = new Label();
             btnAddNewItem = new Button();
             gvInventoryList = new DataGridView();
+            btnIncQty = new Button();
+            btnDecQty = new Button();
+            btnRefresh = new Button();
+            btnDelete = new Button();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gvInventoryList).BeginInit();
             SuspendLayout();
@@ -144,7 +142,7 @@ namespace Milestone_Inventory
             // 
             btnSort.BackColor = Color.DodgerBlue;
             btnSort.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSort.Location = new Point(21, 44);
+            btnSort.Location = new Point(79, 44);
             btnSort.Name = "btnSort";
             btnSort.Size = new Size(81, 24);
             btnSort.TabIndex = 0;
@@ -155,7 +153,7 @@ namespace Milestone_Inventory
             // 
             btnSearch.BackColor = Color.DodgerBlue;
             btnSearch.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnSearch.Location = new Point(825, 44);
+            btnSearch.Location = new Point(765, 44);
             btnSearch.Name = "btnSearch";
             btnSearch.Size = new Size(86, 24);
             btnSearch.TabIndex = 1;
@@ -181,7 +179,7 @@ namespace Milestone_Inventory
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(642, 44);
+            textBox1.Location = new Point(589, 44);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(177, 23);
             textBox1.TabIndex = 3;
@@ -802,70 +800,12 @@ namespace Milestone_Inventory
             lblInventoryItemName6.Size = new Size(100, 23);
             lblInventoryItemName6.TabIndex = 153;
             // 
-            // btnRefresh
-            // 
-            btnRefresh.BackColor = Color.DodgerBlue;
-            btnRefresh.Font = new Font("Franklin Gothic Medium", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnRefresh.Location = new Point(108, 44);
-            btnRefresh.Name = "btnRefresh";
-            btnRefresh.Size = new Size(112, 24);
-            btnRefresh.TabIndex = 102;
-            btnRefresh.Text = "View / Refresh";
-            btnRefresh.UseVisualStyleBackColor = false;
-            btnRefresh.Click += RefreshViewClickEventHandler;
-            // 
-            // lblInventoryDisplay
-            // 
-            lblInventoryDisplay.AutoSize = true;
-            lblInventoryDisplay.Font = new Font("Consolas", 10F);
-            lblInventoryDisplay.Location = new Point(31, 153);
-            lblInventoryDisplay.Name = "lblInventoryDisplay";
-            lblInventoryDisplay.Size = new Size(120, 17);
-            lblInventoryDisplay.TabIndex = 104;
-            lblInventoryDisplay.Text = "Inventory List";
-            // 
-            // cmbIncreaseQty
-            // 
-            cmbIncreaseQty.FormattingEnabled = true;
-            cmbIncreaseQty.Location = new Point(642, 111);
-            cmbIncreaseQty.Name = "cmbIncreaseQty";
-            cmbIncreaseQty.Size = new Size(121, 23);
-            cmbIncreaseQty.TabIndex = 105;
-            cmbIncreaseQty.DropDownClosed += SelectItemToInc;
-            // 
-            // cmbDecreaseQty
-            // 
-            cmbDecreaseQty.FormattingEnabled = true;
-            cmbDecreaseQty.Location = new Point(781, 111);
-            cmbDecreaseQty.Name = "cmbDecreaseQty";
-            cmbDecreaseQty.Size = new Size(121, 23);
-            cmbDecreaseQty.TabIndex = 106;
-            cmbDecreaseQty.DropDownClosed += SelectItemToDec;
-            // 
-            // lblIncreaseQty
-            // 
-            lblIncreaseQty.AutoSize = true;
-            lblIncreaseQty.Location = new Point(642, 78);
-            lblIncreaseQty.Name = "lblIncreaseQty";
-            lblIncreaseQty.Size = new Size(99, 15);
-            lblIncreaseQty.TabIndex = 107;
-            lblIncreaseQty.Text = "Increase Quantity";
-            // 
-            // lblDecreaseQty
-            // 
-            lblDecreaseQty.AutoSize = true;
-            lblDecreaseQty.Location = new Point(781, 78);
-            lblDecreaseQty.Name = "lblDecreaseQty";
-            lblDecreaseQty.Size = new Size(103, 15);
-            lblDecreaseQty.TabIndex = 108;
-            lblDecreaseQty.Text = "Decrease Quantity";
-            // 
             // btnAddNewItem
             // 
             btnAddNewItem.AutoSize = true;
             btnAddNewItem.BackColor = Color.DodgerBlue;
             btnAddNewItem.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnAddNewItem.Location = new Point(452, 481);
+            btnAddNewItem.Location = new Point(429, 477);
             btnAddNewItem.Name = "btnAddNewItem";
             btnAddNewItem.Size = new Size(107, 27);
             btnAddNewItem.TabIndex = 200;
@@ -875,13 +815,62 @@ namespace Milestone_Inventory
             // 
             // gvInventoryList
             // 
-            gvInventoryList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            gvInventoryList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gvInventoryList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
             gvInventoryList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            gvInventoryList.Location = new Point(33, 175);
+            gvInventoryList.Location = new Point(79, 138);
             gvInventoryList.Name = "gvInventoryList";
             gvInventoryList.Size = new Size(772, 279);
             gvInventoryList.TabIndex = 201;
+            gvInventoryList.Click += GridView_ClickEventHandler;
+            // 
+            // btnIncQty
+            // 
+            btnIncQty.BackColor = Color.DodgerBlue;
+            btnIncQty.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnIncQty.Location = new Point(599, 107);
+            btnIncQty.Name = "btnIncQty";
+            btnIncQty.Size = new Size(106, 25);
+            btnIncQty.TabIndex = 202;
+            btnIncQty.Text = "Increase Qty";
+            btnIncQty.UseVisualStyleBackColor = false;
+            btnIncQty.Click += BtnIncQty_ClickEventHandler;
+            // 
+            // btnDecQty
+            // 
+            btnDecQty.BackColor = Color.DodgerBlue;
+            btnDecQty.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDecQty.Location = new Point(745, 107);
+            btnDecQty.Name = "btnDecQty";
+            btnDecQty.Size = new Size(106, 25);
+            btnDecQty.TabIndex = 203;
+            btnDecQty.Text = "Decrease Qty";
+            btnDecQty.UseVisualStyleBackColor = false;
+            btnDecQty.Click += BtnDecQty_ClickEventHandler;
+            // 
+            // btnRefresh
+            // 
+            btnRefresh.BackColor = Color.DodgerBlue;
+            btnRefresh.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnRefresh.Location = new Point(593, 480);
+            btnRefresh.Name = "btnRefresh";
+            btnRefresh.Size = new Size(75, 23);
+            btnRefresh.TabIndex = 204;
+            btnRefresh.Text = "Refresh";
+            btnRefresh.UseVisualStyleBackColor = false;
+            btnRefresh.Click += BtnRefresh_ClickEventHandler;
+            // 
+            // btnDelete
+            // 
+            btnDelete.BackColor = Color.DodgerBlue;
+            btnDelete.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnDelete.Location = new Point(79, 107);
+            btnDelete.Name = "btnDelete";
+            btnDelete.Size = new Size(75, 23);
+            btnDelete.TabIndex = 205;
+            btnDelete.Text = "Delete Item";
+            btnDelete.UseVisualStyleBackColor = false;
+            btnDelete.Click += BtnDelete_ClickEventHandler;
             // 
             // FrmInventoryList
             // 
@@ -890,14 +879,12 @@ namespace Milestone_Inventory
             AutoSize = true;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(1033, 516);
+            Controls.Add(btnDelete);
+            Controls.Add(btnRefresh);
+            Controls.Add(btnDecQty);
+            Controls.Add(btnIncQty);
             Controls.Add(gvInventoryList);
             Controls.Add(btnAddNewItem);
-            Controls.Add(lblDecreaseQty);
-            Controls.Add(lblIncreaseQty);
-            Controls.Add(cmbDecreaseQty);
-            Controls.Add(cmbIncreaseQty);
-            Controls.Add(lblInventoryDisplay);
-            Controls.Add(btnRefresh);
             Controls.Add(lblQuantity10);
             Controls.Add(lblCost10);
             Controls.Add(lblMaterial10);
@@ -1094,14 +1081,12 @@ namespace Milestone_Inventory
         private Label lblUnitSize6;
         private Label lblInventoryItemDescription6;
         private Label lblInventoryItemName6;
-        private Button btnRefresh;
-        private Label lblInventoryDisplay;
-        private ComboBox cmbDecreaseQty;
-        private ComboBox cmbIncreaseQty;
-        private Label lblDecreaseQty;
-        private Label lblIncreaseQty;
         private Button btnAddNewItem;
         private DataGridView gvInventoryList;
+        private Button btnDecQty;
+        private Button btnIncQty;
+        private Button btnRefresh;
+        private Button btnDelete;
         // private DataGridView gvInventory;
     }
 }
