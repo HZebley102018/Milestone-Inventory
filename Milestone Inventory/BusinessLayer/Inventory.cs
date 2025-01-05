@@ -115,20 +115,31 @@ namespace Milestone_Inventory.BusinessLayer
         /// <param name="material"></param>
         /// <param name="cost"></param>
         /// <param name="quantity"></param>
+        /// <param name="allValid"></param>
         /// <returns></returns>
         public List<InvItem> AddNewItem(List<InvItem> invItems, string name, string description, string unitSize, string material, double cost, 
-            int quantity)
+            int quantity, bool allValid)
         {
-            //Instantiate and pass parameters to InvItem Class
-            InvItem newItem = new InvItem(name, description, unitSize, material, cost, quantity);
-            //Appemf to text file using StreamWriter
-            using var sw = new StreamWriter("Data\\Inventory List.txt", append: true);
-            sw.WriteLine($"{newItem.InventoryName}, {newItem.Description}, {newItem.UnitSize}," +
-                    $"{newItem.Material}, {newItem.Cost.ToString()}, {newItem.Quantity.ToString()}");
-            //Let user know item has been added
-            MessageBox.Show("Item added!");
-            //Return list to Forms
-            return invItems;
+            //If inputs are valid, add item to list
+            if (allValid == true)
+            {
+                //Instantiate and pass parameters to InvItem Class
+                InvItem newItem = new InvItem(name, description, unitSize, material, cost, quantity);
+                //Appemf to text file using StreamWriter
+                using var sw = new StreamWriter("Data\\Inventory List.txt", append: true);
+                sw.WriteLine($"{newItem.InventoryName}, {newItem.Description}, {newItem.UnitSize}," +
+                        $"{newItem.Material}, {newItem.Cost.ToString()}, {newItem.Quantity.ToString()}");
+                //Let user know item has been added
+                MessageBox.Show("Item added!");
+                //Return list to Forms
+                return invItems;
+            }
+            //If inputs are not valid, show error message
+            else
+            {
+                MessageBox.Show("Item not added! Please enter valid inputs.");
+                return null;
+            }
         }
 
         /// <summary>
@@ -152,7 +163,72 @@ namespace Milestone_Inventory.BusinessLayer
             return invItems;
         }
 
+        /// <summary>
+        /// Search master inventory for search criterua and retern itemSearch list
+        /// </summary>
+        /// <param name="invItems"></param>
+        /// <param name="itemSearch"></param>
+        /// <param name="searchCriteria"></param>
+        /// <returns></returns>
+        public List<InvItem> SearchInventory(List<InvItem> invItems, List<InvItem> itemSearch, string searchCriteria)
+        {
+            //clear itemSearch
+            itemSearch.Clear();
+            //iterate through master inventory and see if any matches
+            foreach(InvItem item in invItems)
+            {
+                if(item.InventoryName.ToLower().Contains(searchCriteria.ToLower()))
+                {
+                    //add to list
+                    itemSearch.Add(item);
+                }
+            }
+            //return results 
+            return itemSearch;
+        }
 
+        /// <summary>
+        /// Sort Inventory List
+        /// </summary>
+        /// <param name="invItems"></param>
+        /// <returns></returns>
+        public List<InvItem> SortInventory(List <InvItem> invItems)
+        {
+            invItems.Sort((item1, item2) => item1.InventoryName[0].CompareTo(item2.InventoryName[0]));
+            //Overwrite text file using StreamWriter
+            using var sw = new StreamWriter("Data\\Inventory List.txt");
+            foreach (var item in invItems)
+            {
+                sw.WriteLine($"{item.InventoryName}, {item.Description}, {item.UnitSize}," +
+                    $"{item.Material}, {item.Cost.ToString()}, {item.Quantity.ToString()}");
+            }
 
+            return invItems;
+        }
+
+        /// <summary>
+        /// Pull selected item from inventory and return to FrmInventoryList
+        /// To be moved to FrmEditItem
+        /// </summary>
+        /// <param name="invItems"></param>
+        /// <param name="editItem"></param>
+        /// <param name="SelectedRowIndex"></param>
+        /// <returns></returns>
+        public List<InvItem> EditItem(List <InvItem> invItems, List <InvItem> editItem, int SelectedRowIndex)
+        {
+            //write to editItemList to move to FrmEditItem textboxes
+            editItem.Add(invItems[SelectedRowIndex]);
+            //Remove from main inventory to be replaced by edited data
+            invItems.RemoveAt(SelectedRowIndex);
+            //Overwrite text file using StreamWriter
+            using var sw = new StreamWriter("Data\\Inventory List.txt");
+            foreach (var item in invItems)
+            {
+                sw.WriteLine($"{item.InventoryName}, {item.Description}, {item.UnitSize}," +
+                    $"{item.Material}, {item.Cost.ToString()}, {item.Quantity.ToString()}");
+            }
+            //To be used in FrmEditItem
+            return editItem;
+        }
     }
 }

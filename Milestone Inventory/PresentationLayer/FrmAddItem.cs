@@ -23,7 +23,7 @@ namespace Milestone_Inventory
 {
     public partial class FrmAddItem : Form
     {
-        private Inventory inventory;
+        //class level variables
         List<InvItem> invItems = new List<InvItem>();
         public FrmAddItem()
         {
@@ -38,18 +38,28 @@ namespace Milestone_Inventory
         private void SubmitAddItemEventHandler(object sender, EventArgs e)
         {
             //Declare Variables
+            bool allValid = true;
             string name = txtAddName.Text;
             string description = txtAddDescription.Text;
             string unitSize = txtAddUnitSize.Text;
             string material = txtAddMaterial.Text;
             double cost = 0.0;
             int quantity = 0;
-            //Exception checking for textbox entries
-            if (txtAddName.Text == null || txtAddDescription.Text == null ||
-                txtAddUnitSize.Text == null || txtAddMaterial.Text == null)
+            bool isValid = true;
+          
+            //Instantiate utility class to check for valid entries
+            Utility utility = new Utility();
+
+            //Exception checking for textbox entries using utility class
+            if (!utility.NotNull(txtAddName.Text) || !utility.NotNull(txtAddDescription.Text) ||
+                !utility.NotNull(txtAddUnitSize.Text) || !utility.NotNull(txtAddMaterial.Text))
             {
                 MessageBox.Show("Please fill out all items!");
+                //bool to pass to Inventory.AddNewItem()
+                allValid = false;
+
             }
+            //if valid, assign text to variables
             else
             {
                 name = txtAddName.Text;
@@ -57,26 +67,37 @@ namespace Milestone_Inventory
                 unitSize = txtAddUnitSize.Text;
                 material = txtAddMaterial.Text;
             }
-            if (double.TryParse(txtAddCost.Text, out double result))
-            {
-                cost = Convert.ToDouble(txtAddCost.Text);
-            }
-            else
+            //test cost is valid double using utility class
+            (cost, isValid) = utility.ValidDouble(txtAddCost.Text);
+            if (!isValid)
             {
                 MessageBox.Show("Please enter a price in dollars and cents.");
+                //bool to pass to Inventory.AddNewItem()
+                allValid = false;
             }
-            if (int.TryParse(txtAddQuantity.Text, out int result1))
-            {
-                quantity = Convert.ToInt32(txtAddQuantity.Text);
-            }
+            //if valid double, assign to variable
             else
             {
-                MessageBox.Show("Please enter a valid whole number quantity.");
+               cost = Convert.ToDouble(txtAddCost.Text); 
             }
+            //test quantity is valid int
+            (quantity, isValid) = utility.ValidInt(txtAddQuantity.Text);
+            if (!isValid)
+            {
+                MessageBox.Show("Please enter a valid whole number quantity.");
+                //bool to pass to Inventory.AddNewItem()
+                allValid = false;
+            }
+            //if valid, assign to variable
+            else
+            {
+               quantity = Convert.ToInt32(txtAddQuantity.Text);  
+            }
+
             //Instantiate Inventory Class
             Inventory newItem = new Inventory();
             //Pass parameters to Inventory Class method
-            invItems = newItem.AddNewItem(invItems, name, description, unitSize, material, cost, quantity);
+            invItems = newItem.AddNewItem(invItems, name, description, unitSize, material, cost, quantity, allValid);
 
             //Clear contents of form
             txtAddName.Text = "";

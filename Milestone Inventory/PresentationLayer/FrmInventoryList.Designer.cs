@@ -39,7 +39,7 @@ namespace Milestone_Inventory
             btnSearch = new Button();
             fileSystemWatcher1 = new FileSystemWatcher();
             lblListHeader = new Label();
-            textBox1 = new TextBox();
+            txtSearch = new TextBox();
             lblQuantity1 = new Label();
             lblCost1 = new Label();
             lblMaterial1 = new Label();
@@ -134,6 +134,7 @@ namespace Milestone_Inventory
             btnDecQty = new Button();
             btnRefresh = new Button();
             btnDelete = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)fileSystemWatcher1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)gvInventoryList).BeginInit();
             SuspendLayout();
@@ -148,6 +149,7 @@ namespace Milestone_Inventory
             btnSort.TabIndex = 0;
             btnSort.Text = "Sort";
             btnSort.UseVisualStyleBackColor = false;
+            btnSort.Click += BtnSort_ClickEventHandler;
             // 
             // btnSearch
             // 
@@ -159,6 +161,7 @@ namespace Milestone_Inventory
             btnSearch.TabIndex = 1;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = false;
+            btnSearch.Click += BtnSearch_ClickEventHandler;
             // 
             // fileSystemWatcher1
             // 
@@ -177,12 +180,13 @@ namespace Milestone_Inventory
             lblListHeader.TabIndex = 2;
             lblListHeader.Text = "Inventory List";
             // 
-            // textBox1
+            // txtSearch
             // 
-            textBox1.Location = new Point(589, 44);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(177, 23);
-            textBox1.TabIndex = 3;
+            txtSearch.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txtSearch.Location = new Point(589, 44);
+            txtSearch.Name = "txtSearch";
+            txtSearch.Size = new Size(177, 22);
+            txtSearch.TabIndex = 3;
             // 
             // lblQuantity1
             // 
@@ -817,6 +821,8 @@ namespace Milestone_Inventory
             // 
             gvInventoryList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             gvInventoryList.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.DisplayedCells;
+            gvInventoryList.BackgroundColor = Color.PowderBlue;
+            gvInventoryList.BorderStyle = BorderStyle.None;
             gvInventoryList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             gvInventoryList.Location = new Point(79, 138);
             gvInventoryList.Name = "gvInventoryList";
@@ -872,6 +878,18 @@ namespace Milestone_Inventory
             btnDelete.UseVisualStyleBackColor = false;
             btnDelete.Click += BtnDelete_ClickEventHandler;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.DodgerBlue;
+            button1.Font = new Font("Franklin Gothic Medium", 9.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            button1.Location = new Point(172, 109);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 206;
+            button1.Text = "Edit";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += BtnEdit_ClickEventHandler;
+            // 
             // FrmInventoryList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -879,6 +897,7 @@ namespace Milestone_Inventory
             AutoSize = true;
             BackColor = Color.PowderBlue;
             ClientSize = new Size(1033, 516);
+            Controls.Add(button1);
             Controls.Add(btnDelete);
             Controls.Add(btnRefresh);
             Controls.Add(btnDecQty);
@@ -973,7 +992,7 @@ namespace Milestone_Inventory
             Controls.Add(lblUnitSize1);
             Controls.Add(lblInventoryItemDescription1);
             Controls.Add(lblInventoryItemName1);
-            Controls.Add(textBox1);
+            Controls.Add(txtSearch);
             Controls.Add(lblListHeader);
             Controls.Add(btnSearch);
             Controls.Add(btnSort);
@@ -992,7 +1011,7 @@ namespace Milestone_Inventory
         private Button btnSearch;
         private FileSystemWatcher fileSystemWatcher1;
         private Label lblListHeader;
-        private TextBox textBox1;
+        private TextBox txtSearch;
         private Button btnDecrease1;
         private Label lblQuantity1;
         private Label lblCost1;
@@ -1087,6 +1106,7 @@ namespace Milestone_Inventory
         private Button btnIncQty;
         private Button btnRefresh;
         private Button btnDelete;
+        private Button button1;
         // private DataGridView gvInventory;
     }
 }

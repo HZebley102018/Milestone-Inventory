@@ -9,7 +9,7 @@ namespace Milestone_Inventory.Models
     /// <summary>
     /// Create internal class
     /// </summary>
-    internal class InvItem
+    public class InvItem
     {
         //Define properties
         public string InventoryName { get; set; }
