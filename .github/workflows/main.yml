@@ -1,0 +1,36 @@
+name: Publish .NET Desktop App
+
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+    - uses: actions/checkout@v4
+
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        dotnet-version: 8.0.x
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build project
+      run: dotnet build --configuration Release
+
+    - name: Publish project
+      run: dotnet publish Milestone_Inventory/Milestone_Inventory.csproj -c Release -r win-x64 --self-contained true -o publish
+
+    - name: Zip published files
+      run: Compress-Archive -Path publish\* -DestinationPath MilestoneApp.zip
+      shell: pwsh
+
+    - name: Upload artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: MilestoneApp
+        path: MilestoneApp.zip
