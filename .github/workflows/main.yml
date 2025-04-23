@@ -2,35 +2,38 @@ name: Publish .NET Desktop App
 
 on:
   push:
-    branches: [ "master" ]
+    branches: [ "master" ]  # Triggers when changes are pushed to the master branch
+  pull_request:
+    branches: [ "master" ]  # Triggers on pull request to the master branch
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: windows-latest  # Use a Windows-based runner
 
     steps:
-    - uses: actions/checkout@v4
+    - name: Checkout repository
+      uses: actions/checkout@v4  # Check out the code from your repo
 
-    - name: Setup .NET
-      uses: actions/setup-dotnet@v4
+    - name: Setup .NET SDK
+      uses: actions/setup-dotnet@v4  # Setup .NET environment
       with:
-        dotnet-version: 8.0.x
+        dotnet-version: 8.0.x  # Specify the version of .NET you want
 
     - name: Restore dependencies
-      run: dotnet restore
+      run: dotnet restore Milestone Inventory/Milestone Inventory.csproj  # Restore NuGet packages
 
     - name: Build project
-      run: dotnet build --configuration Release
+      run: dotnet build Milestone Inventory/Milestone Inventory.csproj -c Release  # Build the project in Release configuration
 
     - name: Publish project
-      run: dotnet publish Milestone_Inventory/Milestone_Inventory.csproj -c Release -r win-x64 --self-contained true -o publish
+      run: dotnet publish Milestone Inventory/Milestone Inventory.csproj -c Release -r win-x64 --self-contained true -o publish  # Publish the app as self-contained for Windows
 
     - name: Zip published files
-      run: Compress-Archive -Path publish\* -DestinationPath MilestoneApp.zip
-      shell: pwsh
+      run: Compress-Archive -Path publish\* -DestinationPath MilestoneApp.zip  # Zip up the published files into a single .zip file
+      shell: pwsh  # Use PowerShell to run this command
 
     - name: Upload artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4  # Upload the .zip file as an artifact
       with:
-        name: MilestoneApp
-        path: MilestoneApp.zip
+        name: MilestoneApp  # The name of the artifact
+        path: MilestoneApp.zip  # Path to the .zip file
