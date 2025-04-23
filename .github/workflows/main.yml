@@ -20,13 +20,13 @@ jobs:
         dotnet-version: 8.0.x  # Specify the version of .NET you want
 
     - name: Restore dependencies
-      run: dotnet restore Milestone Inventory/Milestone Inventory.csproj  # Restore NuGet packages
+      run: dotnet restore "Milestone Inventory/Milestone Inventory.csproj"  # Restore NuGet packages
 
     - name: Build project
-      run: dotnet build Milestone Inventory/Milestone Inventory.csproj -c Release  # Build the project in Release configuration
+      run: dotnet build "Milestone Inventory/Milestone Inventory.csproj" -c Release  # Build the project in Release configuration
 
     - name: Publish project
-      run: dotnet publish Milestone Inventory/Milestone Inventory.csproj -c Release -r win-x64 --self-contained true -o publish  # Publish the app as self-contained for Windows
+      run: dotnet publish "Milestone Inventory/Milestone Inventory.csproj" -c Release -r win-x64 --self-contained true -o publish  # Publish the app as self-contained for Windows
 
     - name: Zip published files
       run: Compress-Archive -Path publish\* -DestinationPath MilestoneApp.zip  # Zip up the published files into a single .zip file
